@@ -1,0 +1,22 @@
+{
+  "name": "personio-challenge",
+  "version": "0.0.1",
+  "description": "Ever Changing Company Hierarchy",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/mohsenshafiei/personio-challenge.git"
+  },
+  "keywords": [
+    "personio-challenge"
+  ],
+  "author": "Mohsen Shafiei Tafreshi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/mohsenshafiei/personio-challenge/issues"
+  },
+  "homepage": "https://gitlab.com/mohsenshafiei/personio-challenge#README"
+}
