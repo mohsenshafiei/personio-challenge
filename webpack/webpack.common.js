@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -24,6 +25,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './index.html',
     }),
+    new StyleLintPlugin(),
   ],
   output: {
     filename: 'index.js',
