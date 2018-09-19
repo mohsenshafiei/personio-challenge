@@ -18,5 +18,11 @@
   "bugs": {
     "url": "https://gitlab.com/mohsenshafiei/personio-challenge/issues"
   },
-  "homepage": "https://gitlab.com/mohsenshafiei/personio-challenge#README"
+  "homepage": "https://gitlab.com/mohsenshafiei/personio-challenge#README",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1"
+  }
 }
