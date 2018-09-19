@@ -10,21 +10,21 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-        options: { presets: ['env'] }
+        options: { presets: ['env'] },
       },
       {
         test: /\.(css|scss|sass)$/,
-        use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js)$/,
         exclude: /node_modules/,
-        use: ['eslint-loader']
-      }
+        use: ['eslint-loader'],
+      },
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx', '*']
+    extensions: ['.js', '.jsx', '*'],
   },
   plugins: [
     new HtmlWebpackPlugin({
