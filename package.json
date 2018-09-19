@@ -2,7 +2,7 @@
   "name": "personio-challenge",
   "version": "0.0.1",
   "description": "Ever Changing Company Hierarchy",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "npm run test"
   },
