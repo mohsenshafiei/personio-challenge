@@ -12,8 +12,8 @@ module.exports = {
         options: { presets: ['env'] }
       },
       {
-        test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+        test: /\.(css|scss|sass)$/,
+        use: [ 'style-loader', 'css-loader', 'sass-loader' ]
       }
     ],
   },
