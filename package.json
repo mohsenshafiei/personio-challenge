@@ -4,6 +4,8 @@
   "description": "Ever Changing Company Hierarchy",
   "private": true,
   "scripts": {
+    "start": "webpack-dev-server --open --hot --progress --config webpack/webpack.dev.js",
+    "build": "webpack --config webpack/webpack.prod.js",
     "test": "npm run test"
   },
   "repository": {
