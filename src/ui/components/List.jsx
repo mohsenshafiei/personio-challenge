@@ -5,6 +5,13 @@ const placeholder = document.createElement('li');
 placeholder.className = 'placeholder';
 
 class List extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      employees: this.props.employees,
+    };
+  }
+
   dragStart(e) {
     this.dragged = e.currentTarget;
     e.dataTransfer.effectAllowed = 'move';
@@ -12,6 +19,7 @@ class List extends React.Component {
   }
 
   dragEnd(e) {
+    console.log(e);
     this.dragged.style.display = 'block';
     this.dragged.parentNode.removeChild(placeholder);
     const data = this.state.employees;
@@ -22,22 +30,29 @@ class List extends React.Component {
     this.setState({ employees: data });
   }
 
-  renderTree(list) {
-    return Object.keys(list).map((item, index) => (
-      <li
+  renderTree(list, counter) {
+    return list.map((item, index) => (
+      item[Object.keys(item)].employees.length === 0 ? <li
         data-id={index}
         key={index}
+        className={`list-item-${counter}`}
         draggable='true'
         onDragEnd={this.dragEnd.bind(this)}
         onDragStart={
           this.dragStart.bind(this)}>
-        {Object.keys(list[item].employees).length > 0 ? <div>
-            <a>{item} | <span>{list[item].position}</span></a>
-            <ul>{this.renderTree(list[item].employees) }</ul>
-            </div>
-          : (<a>{item} | <span>{list[item].position}</span></a>)
-        }
-      </li>
+        { Object.keys(item) } | { item[Object.keys(item)].position }
+        </li> : [
+          <li
+            data-id={index}
+            key={index}
+            className={`list-item-${counter}`}
+            draggable='true'
+            onDragEnd={this.dragEnd.bind(this)}
+            onDragStart={
+              this.dragStart.bind(this)}
+          >{ Object.keys(item) } | { item[Object.keys(item)].position }</li>,
+          this.renderTree(item[Object.keys(item)].employees, counter + 1),
+      ]
     ));
   }
 
@@ -54,7 +69,7 @@ class List extends React.Component {
       employees,
     } = this.props;
 
-    const listItems = this.renderTree(employees);
+    const listItems = this.renderTree(employees, 1);
     return (
       <div className="list-component">
         <ul onDragOver={this.dragOver.bind(this)}>
@@ -66,7 +81,7 @@ class List extends React.Component {
 }
 
 List.propTypes = {
-  employees: PropTypes.object,
+  employees: PropTypes.array,
 };
 
 export default List;

@@ -15,19 +15,19 @@
   li {
     padding: 0.5em;
     background: $personio-white;
-    font-weight: 800;
-
-    &:hover {
-      background: darken(#eee, 5%);
-    }
+    font-weight: 600;
+    font-size: 0.8em;
   }
 
-  a {
-    span {
-      font-size: 0.7em;
-      padding: 0.5em;
-      background-color: $personio-yellow;
-      color: $personio-black;
+  $class-slug: list-item !default;
+  @for $i from 1 through 4 {
+    .#{$class-slug}-#{$i} {
+      padding-left: 2em * $i;
+
+      &:hover {
+        background-color: gray;
+        color: $personio-white
+      }
     }
   }
 

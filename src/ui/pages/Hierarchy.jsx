@@ -15,60 +15,93 @@ class Hierarchy extends React.Component {
         'White',
         'Orange',
       ],
-      employees: {
+      employees: [
+        {
+          Sophie: {
+            position: 'VP Engineering',
+            employees: [{
+              Nick: {
+                position: 'Team Lead',
+                employees: [
+                  {
+                    Pete: {
+                      position: 'Backend Engineer',
+                      employees: [],
+                    },
+                  },
+                  {
+                    Barbara: {
+                      position: 'Frontend Engineer',
+                      employees: [],
+                    },
+                  },
+                ],
+              },
+            }],
+          },
+        },
+        {
+          Iulian: {
+            position: 'Engineering Manager',
+            employees: [{
+              Rebeca: {
+                position: 'Team Lead',
+                employees: [
+                  {
+                    Chris: {
+                      position: 'Backend Engineer',
+                      employees: [],
+                    },
+                  },
+                  {
+                    Joe: {
+                      position: 'Frontend Engineer',
+                      employees: [],
+                    },
+                  },
+                ],
+              },
+            }],
+          },
+        },
+        {
+          Robert: {
+            position: 'Engineering Manager',
+            employees: [
+              {
+                Susan: {
+                  position: 'Team Lead',
+                  employees: [
+                    {
+                      Alex: {
+                        position: 'Backend Lead',
+                        employees: [],
+                      },
+                    },
+                    {
+                      Monica: {
+                        position: 'Frontend Lead',
+                        employees: [],
+                      },
+                    },
+                  ],
+                },
+              }],
+          },
+        },
+      ],
+      employeesFlat: {
         Sophie: {
           position: 'VP Engineering',
-          employees: {
-            Nick: {
-              position: 'Team Lead',
-              employees: {
-                Pete: {
-                  position: 'Backend Engineer',
-                  employees: {},
-                },
-                Barbara: {
-                  position: 'Frontend Engineer',
-                  employees: {},
-                },
-              },
-            },
-          },
+          employees: {},
         },
         Iulian: {
           position: 'Engineering Manager',
-          employees: {
-            Carlos: {
-              position: 'Team Lead',
-              employees: {
-                Joe: {
-                  position: 'Backend Lead',
-                  employees: {},
-                },
-                Chris: {
-                  position: 'Frontend Lead',
-                  employees: {},
-                },
-              },
-            },
-          },
+          employees: {},
         },
         Robert: {
           position: 'Engineering Manager',
-          employees: {
-            Susan: {
-              position: 'Team Lead',
-              employees: {
-                Alex: {
-                  position: 'Backend Lead',
-                  employees: {},
-                },
-                Monica: {
-                  position: 'Frontend Lead',
-                  employees: {},
-                },
-              },
-            },
-          },
+          employees: {},
         },
       },
     };
