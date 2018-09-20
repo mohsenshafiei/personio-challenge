@@ -1,0 +1,61 @@
+.home {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $personio-green;
+  min-width: 20em;
+
+  .welcome {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+  }
+
+  .logo {
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50% , -50%);
+
+    svg {
+      width: 40%;
+      min-width: 14em;
+      max-width: 16em;
+    }
+  }
+
+  .links {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+
+    &__item {
+      border: 0.2em solid $personio-black;
+      padding: 1em;
+      text-decoration: none;
+      font-weight: 900;
+      background-color: $personio-white;
+      color: $personio-black;
+      border-radius: 0.2em;
+
+      &:visited {
+        text-decoration: none;
+        color: $personio-black;
+      }
+
+      &:hover {
+        background-color: $personio-yellow;
+      }
+    }
+  }
+}
