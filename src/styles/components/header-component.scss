@@ -1,0 +1,19 @@
+.header-component {
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3em;
+  background-color: $personio-green;
+
+  .language {
+    position: absolute;
+    background-color: $personio-yellow;
+    top: 1.5em;
+    left: 1.5em;
+    padding: 0.5em;
+    font-weight: 900;
+    border-radius: 0.2em;
+  }
+}
