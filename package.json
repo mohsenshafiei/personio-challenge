@@ -45,6 +45,7 @@
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
+    "i18next": "^11.9.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-router-dom": "^4.3.1"
