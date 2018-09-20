@@ -10,5 +10,6 @@ module.exports = merge(common, {
     port: 9002,
     stats: 'minimal',
     hot: true,
+    historyApiFallback: true,
   },
 });

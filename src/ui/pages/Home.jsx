@@ -1,11 +1,11 @@
 import React from 'react';
-import Router from './router';
+import { Link } from 'react-router-dom';
 
-class App extends React.Component {
+class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: 'Hello Personio',
+      title: 'Home Page',
     };
   }
 
@@ -13,10 +13,10 @@ class App extends React.Component {
     return (
       <div>
         <h1>{this.state.title}</h1>
-        <Router />
+        <Link to='/hierarchy'>Hierarchy</Link>
       </div>
     );
   }
 }
 
-export default App;
+export default Home;
