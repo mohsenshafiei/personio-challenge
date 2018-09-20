@@ -1,4 +1,5 @@
 import React from 'react';
+import Router from './router';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>{this.state.title}</h1>
+        <Router />
       </div>
     );
   }
