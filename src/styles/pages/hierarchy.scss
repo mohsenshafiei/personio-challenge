@@ -1,0 +1,32 @@
+.hierarchy {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $personio-green;
+  min-width: 20em;
+  min-height: 30em;
+
+  .title {
+    position: absolute;
+    margin-left: 1em;
+    margin-bottom: 0;
+    padding: 0.5em;
+    z-index: 3;
+    top: 15%;
+    border-bottom: 0.2em solid $personio-black;
+
+    h4 {
+      margin: 0;
+    }
+  }
+
+  .list {
+    background-color: red;
+    width: 100%;
+    position: absolute;
+    top: 60%;
+
+  }
+}
