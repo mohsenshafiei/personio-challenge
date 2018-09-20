@@ -2,8 +2,10 @@
 @import "globals/colors";
 
 @import "pages/home";
+@import "pages/hierarchy";
 
 @import "components/header-component";
+@import "components/list-component";
 
 body {
   font-size: 1em;
