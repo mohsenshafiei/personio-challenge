@@ -1,0 +1,12 @@
+@import "globals/fonts";
+@import "globals/colors";
+
+@import "pages/home";
+
+body {
+  font-size: 1em;
+  font-family: $personio-font-family;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
