@@ -6,10 +6,10 @@ i18next.init({
   interpolation: {
     escapeValue: false,
   },
-  lng: 'en',
+  lng: window.localStorage.getItem('locale') ? window.localStorage.getItem('locale') : 'en',
   resources: {
     en: En,
-    es: De,
+    de: De,
   },
 });
 
