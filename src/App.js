@@ -3,6 +3,8 @@ import Router from './router';
 
 import i18n from './i18n';
 
+import Header from './ui/components/Header.jsx';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -14,6 +16,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <Header/>
         <Router />
       </div>
     );
