@@ -1,0 +1,44 @@
+.list-component {
+  width: 90%;
+  position: absolute;
+  margin-left: 5%;
+  margin-bottom: 5em;
+  overflow-x: hidden;
+  background-color: $personio-white;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0.5em;
+    border: none;
+  }
+
+  li {
+    padding: 0.8em;
+    background: $personio-white;
+    font-weight: 600;
+    font-size: 0.8em;
+  }
+
+  $class-slug: list-item !default;
+  @for $i from 1 through 10 {
+    .#{$class-slug}-#{$i} {
+      padding-left: 3em * $i;
+      background-color: rgb($i*80, $i*113, $i*192);
+
+      &:hover {
+        background-color: $personio-yellow;
+        color: $personio-black
+      }
+    }
+  }
+
+  .placeholder {
+    background: $personio-green;
+
+    &:before {
+      content: "Drop Item Here";
+      color: $personio-yellow;
+    }
+  }
+}

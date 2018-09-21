@@ -2,8 +2,10 @@
 @import "globals/colors";
 
 @import "pages/home";
+@import "pages/hierarchy";
 
 @import "components/header-component";
+@import "components/list-component";
 
 body {
   font-size: 1em;
@@ -11,5 +13,6 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  width: 100%;
   min-width: 20em;
 }
