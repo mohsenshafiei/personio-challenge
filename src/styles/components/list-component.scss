@@ -13,16 +13,17 @@
   }
 
   li {
-    padding: 0.5em;
+    padding: 0.8em;
     background: $personio-white;
     font-weight: 600;
     font-size: 0.8em;
   }
 
   $class-slug: list-item !default;
-  @for $i from 1 through 4 {
+  @for $i from 1 through 10 {
     .#{$class-slug}-#{$i} {
-      padding-left: 2em * $i;
+      padding-left: 4em * $i;
+      background-color: rgb($i*80, $i*113, $i*192);
 
       &:hover {
         background-color: gray;
