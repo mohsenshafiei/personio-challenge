@@ -9,7 +9,40 @@ class List extends React.Component {
     super(props);
     this.state = {
       employees: this.props.employees,
+      target: null,
     };
+  }
+
+  traverseDataToFindDragged(list, dragged) {
+    let data = null;
+    if (dragged.length > 1) {
+      data = this.traverseDataToFindDragged(
+        list[dragged.charAt(0)][Object.keys(list[dragged.charAt(0)])].employees,
+        dragged.substring(1, dragged.length),
+      );
+    } else {
+      data = list[dragged.charAt(0)];
+      // eslint-disable-next-line
+      delete list[dragged.charAt(0)];
+      return data;
+    }
+    return data;
+  }
+
+  traverseDataToFindTarget(list, target, dragged) {
+    if (target.length > 1) {
+      this.traverseDataToFindTarget(
+        list[target.charAt(0)][Object.keys(list[target.charAt(0)])].employees,
+        target.substring(1, target.length),
+        dragged,
+      );
+    } else {
+      // eslint-disable-next-line
+      list[list.length] = this.traverseDataToFindDragged(
+        this.state.employees, dragged,
+      );
+    }
+    return true;
   }
 
   dragStart(e) {
@@ -19,44 +52,19 @@ class List extends React.Component {
   }
 
   dragEnd(e) {
-    console.log(e);
+    if (this.state.target.getAttribute('address')) {
+      this.traverseDataToFindTarget(
+        this.state.employees, this.state.target.getAttribute('address'), e.target.getAttribute('address'),
+      );
+    }
     this.dragged.style.display = 'block';
     this.dragged.parentNode.removeChild(placeholder);
     const data = this.state.employees;
-    const from = Number(this.dragged.dataset.id);
-    let to = Number(this.over.dataset.id);
-    if (from < to) to -= 1;
-    data.splice(to, 0, data.splice(from, 1)[0]);
     this.setState({ employees: data });
   }
 
-  renderTree(list, counter) {
-    return list.map((item, index) => (
-      item[Object.keys(item)].employees.length === 0 ? <li
-        data-id={index}
-        key={index}
-        className={`list-item-${counter}`}
-        draggable='true'
-        onDragEnd={this.dragEnd.bind(this)}
-        onDragStart={
-          this.dragStart.bind(this)}>
-        { Object.keys(item) } | { item[Object.keys(item)].position }
-        </li> : [
-          <li
-            data-id={index}
-            key={index}
-            className={`list-item-${counter}`}
-            draggable='true'
-            onDragEnd={this.dragEnd.bind(this)}
-            onDragStart={
-              this.dragStart.bind(this)}
-          >{ Object.keys(item) } | { item[Object.keys(item)].position }</li>,
-          this.renderTree(item[Object.keys(item)].employees, counter + 1),
-      ]
-    ));
-  }
-
   dragOver(e) {
+    this.setState({ target: e.target });
     e.preventDefault();
     this.dragged.style.display = 'none';
     if (e.target.className === 'placeholder') return;
@@ -64,12 +72,42 @@ class List extends React.Component {
     e.target.parentNode.insertBefore(placeholder, e.target);
   }
 
+  renderTree(list, counter, address) {
+    return list.map((item, index) => (
+      item[Object.keys(item)].employees.length === 0 ? <li
+        data-id={index}
+        level={counter}
+        address={address + index}
+        key={index}
+        className={`list-item-${counter}`}
+        draggable='true'
+        onDragEnd={this.dragEnd.bind(this)}
+        onDragStart={
+          this.dragStart.bind(this)}>
+        { Object.keys(item) } | { item[Object.keys(item)].position }
+      </li> : [
+        <li
+          data-id={index}
+          level={counter}
+          address={address + index}
+          key={index}
+          className={`list-item-${counter}`}
+          draggable='true'
+          onDragEnd={this.dragEnd.bind(this)}
+          onDragStart={
+            this.dragStart.bind(this)}
+        >{ Object.keys(item) } | { item[Object.keys(item)].position }</li>,
+        this.renderTree(item[Object.keys(item)].employees, counter + 1, (address + index)),
+      ]
+    ));
+  }
+
   render() {
     const {
       employees,
     } = this.props;
 
-    const listItems = this.renderTree(employees, 1);
+    const listItems = this.renderTree(employees, 1, '');
     return (
       <div className="list-component">
         <ul onDragOver={this.dragOver.bind(this)}>
