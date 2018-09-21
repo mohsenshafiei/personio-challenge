@@ -7,12 +7,16 @@
   background-color: $personio-green;
   min-width: 20em;
 
-  .welcome {
+  .motto {
     position: absolute;
     width: 100%;
     text-align: center;
     top: 50%;
     left: 50%;
+    font-size: 1.5em;
+    @media (max-width: 22.5em) {
+      font-size: 1.2em;
+    }
     transform: translate(-50% , -50%);
   }
 
