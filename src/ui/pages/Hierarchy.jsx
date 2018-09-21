@@ -7,25 +7,25 @@ class Hierarchy extends React.Component {
     this.state = {
       title: 'Personio Company Hierarchy',
       employees: [{
-        Arsenie: {
+        Arseniy: {
           position: 'CTO',
           employees: [
             {
               Sophie: {
-                position: 'VP Engineering',
+                position: 'Technical Lead',
                 employees: [{
                   Nick: {
-                    position: 'Team Lead',
+                    position: 'Technical Product Manager Lead',
                     employees: [
                       {
                         Pete: {
-                          position: 'Backend Engineer',
+                          position: 'Technical Product Manager Backend',
                           employees: [],
                         },
                       },
                       {
                         Barbara: {
-                          position: 'Frontend Engineer',
+                          position: 'Technical Product Manager Frontend',
                           employees: [],
                         },
                       },
@@ -35,21 +35,21 @@ class Hierarchy extends React.Component {
               },
             },
             {
-              Sophie: {
-                position: 'VP Engineering',
+              Michael: {
+                position: 'Backend Team Lead',
                 employees: [{
-                  Nick: {
-                    position: 'Team Lead',
+                  Amelia: {
+                    position: 'Backend Engineer',
                     employees: [
                       {
-                        Pete: {
-                          position: 'Backend Engineer',
+                        Emma: {
+                          position: 'Backend Developer',
                           employees: [],
                         },
                       },
                       {
-                        Barbara: {
-                          position: 'Frontend Engineer',
+                        Harry: {
+                          position: 'Backend Developer',
                           employees: [],
                         },
                       },
@@ -59,21 +59,21 @@ class Hierarchy extends React.Component {
               },
             },
             {
-              Sophie: {
-                position: 'VP Engineering',
+              Jackob: {
+                position: 'Frontend Lead',
                 employees: [{
-                  Nick: {
-                    position: 'Team Lead',
+                  Oscar: {
+                    position: 'Frontend Engineer',
                     employees: [
                       {
-                        Pete: {
-                          position: 'Backend Engineer',
+                        Connor: {
+                          position: 'Frontend Developer',
                           employees: [],
                         },
                       },
                       {
-                        Barbara: {
-                          position: 'Frontend Engineer',
+                        Noah: {
+                          position: 'Frontend Developer',
                           employees: [],
                         },
                       },
@@ -83,21 +83,21 @@ class Hierarchy extends React.Component {
               },
             },
             {
-              Iulian: {
-                position: 'Engineering Manager',
+              Liam: {
+                position: 'Engineering Manager Lead',
                 employees: [{
-                  Rebeca: {
-                    position: 'Team Lead',
+                  William: {
+                    position: 'Engineering Manager',
                     employees: [
                       {
-                        Chris: {
-                          position: 'Backend Engineer',
+                        David: {
+                          position: 'Junior Engineer Manager',
                           employees: [],
                         },
                       },
                       {
-                        Joe: {
-                          position: 'Frontend Engineer',
+                        Charles: {
+                          position: 'Junior Engineer Manager',
                           employees: [],
                         },
                       },
@@ -107,28 +107,29 @@ class Hierarchy extends React.Component {
               },
             },
             {
-              Robert: {
+              Thomas: {
                 position: 'Engineering Manager',
                 employees: [
                   {
-                    Susan: {
+                    Alexander: {
                       position: 'Team Lead',
                       employees: [
                         {
-                          Alex: {
+                          Kyle: {
                             position: 'Backend Lead',
                             employees: [],
                           },
                         },
                         {
-                          Monica: {
+                          Reece: {
                             position: 'Frontend Lead',
                             employees: [],
                           },
                         },
                       ],
                     },
-                  }],
+                  },
+                ],
               },
             },
           ],
