@@ -5,12 +5,13 @@
   margin-bottom: 5em;
   overflow-x: hidden;
   background-color: $personio-white;
+  border-radius: 0.2em;
 
   ul {
     list-style: none;
     margin: 0;
     padding: 0.5em;
-    border: none;
+    border: none
   }
 
   li {
@@ -23,8 +24,14 @@
   $class-slug: list-item !default;
   @for $i from 1 through 10 {
     .#{$class-slug}-#{$i} {
-      padding-left: 3em * $i;
+      padding-left: 1em * $i * $i/2;
       background-color: rgb($i*80, $i*113, $i*192);
+
+      @if ($i == 1) {
+        font-size: 0.9em;
+        font-weight: 900;
+        color: white
+      }
 
       &:hover {
         background-color: $personio-yellow;
@@ -37,8 +44,8 @@
     background: $personio-green;
 
     &:before {
-      content: "Drop Item Here";
-      color: $personio-yellow;
+      content: "Drop Employee Here";
+      color: $personio-black;
     }
   }
 }
