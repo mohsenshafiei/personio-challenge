@@ -1,0 +1,41 @@
+.error {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $personio-green;
+  min-width: 20em;
+
+  .not-found-page {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+
+    &__title {
+      font-weight: 900;
+      font-size: 2em;
+      margin: 0 0 1em;
+    }
+
+    &__subtitle {
+      font-size: 1em;
+      padding-bottom: 1em;
+      @media (max-width: 24em) {
+        font-size: 0.8em;
+      }
+    }
+
+    &__link {
+      font-size: 0.8em;
+      font-weight: 800;
+      text-decoration: none;
+      color: $personio-black;
+      background-color: $personio-yellow;
+      padding: 1em;
+    }
+  }
+}
