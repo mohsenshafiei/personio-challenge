@@ -10,6 +10,10 @@ export default {
     },
     links: {
       hierarchy: 'Verkrijg de hiërarchie',
+      goBackHomePage: 'Ga terug naar de startpagina',
+    },
+    errors: {
+      notFoundPage: 'De pagina waarnaar u op zoek was, lijkt niet te bestaan',
     },
   },
 };

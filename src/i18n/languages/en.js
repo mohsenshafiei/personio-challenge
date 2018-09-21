@@ -10,6 +10,10 @@ export default {
     },
     links: {
       hierarchy: 'Get The Hierarchy',
+      goBackHomePage: 'Go back to home page',
+    },
+    errors: {
+      notFoundPage: 'The page you were looking for doesn\'t appear to exist',
     },
   },
 };
