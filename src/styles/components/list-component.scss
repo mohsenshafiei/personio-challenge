@@ -1,9 +1,10 @@
 .list-component {
   width: 90%;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-left: 5%;
+  margin-bottom: 5em;
+  overflow-x: hidden;
+  background-color: $personio-white;
 
   ul {
     list-style: none;
@@ -22,12 +23,12 @@
   $class-slug: list-item !default;
   @for $i from 1 through 10 {
     .#{$class-slug}-#{$i} {
-      padding-left: 4em * $i;
+      padding-left: 3em * $i;
       background-color: rgb($i*80, $i*113, $i*192);
 
       &:hover {
-        background-color: gray;
-        color: $personio-white
+        background-color: $personio-yellow;
+        color: $personio-black
       }
     }
   }
