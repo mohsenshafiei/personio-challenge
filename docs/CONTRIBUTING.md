@@ -42,3 +42,4 @@ Before creating bug reports, please check issues list as you might find out that
      * `refactor:` A code change that neither fixes a bug or adds a feature
      * `perf` A code change that improves performance
      * `test` Adding missing tests
+* Don't forget to put the <b>DOT</b> at the end of your commit
