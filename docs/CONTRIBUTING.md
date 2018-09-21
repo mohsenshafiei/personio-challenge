@@ -1,4 +1,4 @@
-## Contributing to Atom
+## Contributing to Personio Challenge
 
 #### Table Of Contents
 
