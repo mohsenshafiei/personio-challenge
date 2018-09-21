@@ -9,25 +9,9 @@
   border-bottom: 0.2em solid $personio-white;
   min-width: 20em;
   width: 100%;
-
-  .language {
-    position: absolute;
-    background-color: $personio-white;
-    top: 1.5em;
-    right: 5%;
-    padding: 0.5em;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-    font-weight: 900;
-    border-radius: 0.2em;
-    border: 0.2em solid $personio-black;
-    z-index: 4;
-
-    &:hover {
-      background-color: $personio-yellow;
-      cursor: pointer;
-    }
-  }
+  -webkit-box-shadow: 0 0.1875em 0.3125em $personio-box-shadow;
+  -moz-box-shadow: 0 0.1875em 0.3125em $personio-box-shadow;
+  box-shadow: 0 0.1875em 0.3125em $personio-box-shadow;
 
   .logo {
     position: absolute;
@@ -36,8 +20,24 @@
     text-align: center;
 
     svg {
-      min-width: 10em;
-      max-width: 10em;
+      width: 10em;
+    }
+  }
+
+  .language {
+    position: absolute;
+    background-color: $personio-white;
+    top: 1.5em;
+    right: 5%;
+    padding: 0.5em 1.5em;
+    font-weight: 900;
+    border-radius: 0.2em;
+    border: 0.2em solid $personio-black;
+    z-index: 4;
+
+    &:hover {
+      background-color: $personio-yellow;
+      cursor: pointer;
     }
   }
 }
