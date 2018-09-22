@@ -15,5 +15,8 @@ export default {
     errors: {
       notFoundPage: 'The page you were looking for doesn\'t appear to exist',
     },
+    inputs: {
+      uploader: 'Upload A File',
+    },
   },
 };
