@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 const placeholder = document.createElement('li');
 placeholder.className = 'placeholder';
@@ -8,7 +9,7 @@ class List extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      employees: this.props.employees,
+      items: props.items || JSON.parse(window.localStorage.getItem('file')),
       target: null,
     };
   }
@@ -103,11 +104,7 @@ class List extends React.Component {
   }
 
   render() {
-    const {
-      employees,
-    } = this.props;
-
-    const listItems = this.renderTree(employees, 1, '');
+    const listItems = this.renderTree(this.state.items, 1, '');
     return (
       <div className="list-component">
         <ul onDragOver={this.dragOver.bind(this)}>
@@ -119,7 +116,11 @@ class List extends React.Component {
 }
 
 List.propTypes = {
-  employees: PropTypes.array,
+  items: PropTypes.array,
 };
 
-export default List;
+const mapStateToProps = state => ({
+  items: state.hierarchy.employees,
+});
+
+export default connect(mapStateToProps, null)(List);
