@@ -1,16 +1,31 @@
 import React from 'react';
-import i18n from '../../i18n';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import i18n from '../../i18n';
 import Personio from './Personio.jsx';
+import changeLanguage from '../../store/main/actions';
 
-
-const Header = () => (
+const Header = props => (
     <div className="header-component">
-      <Link className="logo" to="/">
+      <Link className="logo" to="/" >
         <Personio/>
       </Link>
-      <a className="language">{i18n.t('language')}</a>
+      <a className="language" onClick={ () => { props.changeLanguage(); } }>{i18n.t('language')}</a>
     </div>
 );
 
-export default Header;
+Header.propTypes = {
+  main: PropTypes.object,
+  changeLanguage: PropTypes.func,
+};
+
+const mapStateToProps = state => ({
+  main: state.main,
+});
+const mapDispatchToProps = dispatch => ({
+  changeLanguage: () => {
+    dispatch(changeLanguage());
+  },
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

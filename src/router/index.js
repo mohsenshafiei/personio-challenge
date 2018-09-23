@@ -13,7 +13,7 @@ const Router = ({ location }) => (
     <CSSTransition key={location.key} classNames={'fade'} timeout={{ enter: 300, exit: 300 }}>
       <section className="route-section">
         <Switch location={location}>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Home}/>
           <Route exact path="/hierarchy" component={Hierarchy} />
           <Route render={() => <Error error={404}/>} />
         </Switch>

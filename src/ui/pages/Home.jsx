@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import i18n from '../../i18n';
 import Uploader from '../components/Uploader.jsx';
 import Personio from '../components/Personio.jsx';
+
+import jsonFileUploaded from '../../store/hierarchy/actions';
+
 
 class Home extends React.Component {
   constructor(props) {
@@ -24,7 +28,13 @@ class Home extends React.Component {
       {!this.state.uploaded
         && <Uploader
           classname="upload"
-          onSelect={ (e) => { console.log(JSON.parse(e)); this.setState({ uploaded: true }); } }/>}
+          onSelect={ (e) => {
+            this.setState({ uploaded: true });
+            window.localStorage.setItem('file', e);
+            this.props.upload(JSON.parse(e));
+          }
+          }
+      />}
       {this.state.uploaded
         && <div className="links">
         <Link className="links__item" to='/hierarchy'>{i18n.t('links.hierarchy')}</Link>
@@ -33,4 +43,16 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+Home.propTypes = {
+  upload: PropTypes.func,
+};
+
+const mapStateToProps = state => ({
+  hierarchy: state.hierarchy,
+});
+const mapDispatchToProps = dispatch => ({
+  upload: (file) => {
+    dispatch(jsonFileUploaded(file));
+  },
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
