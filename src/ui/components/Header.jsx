@@ -1,8 +1,7 @@
 import React from 'react';
-import i18n from '../../i18n';
 import { Link } from 'react-router-dom';
+import i18n from '../../i18n';
 import Personio from './Personio.jsx';
-
 
 const Header = () => (
     <div className="header-component">
