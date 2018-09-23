@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import i18n from '../../i18n';
 import Uploader from '../components/Uploader.jsx';
 import Personio from '../components/Personio.jsx';
@@ -17,10 +18,6 @@ class Home extends React.Component {
   }
 
   render() {
-    const {
-      store,
-    } = this.props;
-
     return (<div className="home">
       <div className="logo">
         <Personio/>
@@ -33,7 +30,8 @@ class Home extends React.Component {
           classname="upload"
           onSelect={ (e) => {
             this.setState({ uploaded: true });
-            store.dispatch(jsonFileUploaded(JSON.parse(e)));
+            window.localStorage.setItem('file', e);
+            this.props.upload(JSON.parse(e));
           }
           }
       />}
@@ -46,7 +44,15 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-  store: PropTypes.object,
+  upload: PropTypes.func,
 };
 
-export default Home;
+const mapStateToProps = state => ({
+  hierarchy: state.hierarchy,
+});
+const mapDispatchToProps = dispatch => ({
+  upload: (file) => {
+    dispatch(jsonFileUploaded(file));
+  },
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
