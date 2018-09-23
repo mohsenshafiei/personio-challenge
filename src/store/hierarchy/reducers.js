@@ -14,7 +14,7 @@ const hierarchyReducers = (state = initialState, action) => {
     case 'JSON_FILE_UPLOADED_SUCCESSFUL': {
       return {
         ...state,
-        employees: action.payload,
+        upload: action.payload,
       };
     }
     default:
