@@ -8,9 +8,11 @@ import {
 import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import hierarchyReducers from './hierarchy/reducers';
+import mainReducers from './main/reducers';
 import sagas from './sagas';
 
 const reducers = combineReducers({
+  main: mainReducers,
   hierarchy: hierarchyReducers,
 });
 const logger = createLogger();
