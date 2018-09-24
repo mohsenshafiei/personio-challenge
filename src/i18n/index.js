@@ -1,12 +1,12 @@
 import i18next from 'i18next';
-import en from './languages/en';
-import de from './languages/de';
+import En from './languages/en';
+import De from './languages/de';
 
 i18next.init({
-  lng: window.localStorage.getItem('locale') || 'en',
+  lng: window.localStorage.getItem('locale') || 'En',
   resources: {
-    en,
-    de,
+    En,
+    De,
   },
 });
 
