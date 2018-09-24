@@ -6,7 +6,7 @@ import i18n from '../../i18n';
 import Uploader from '../components/Uploader.jsx';
 import Personio from '../components/Personio.jsx';
 
-import { fileUploaded } from '../../store/hierarchy/actions';
+import { fileUpload } from '../../store/hierarchy/actions';
 
 
 class Home extends React.Component {
@@ -51,7 +51,7 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => ({
   upload: (file) => {
-    dispatch(fileUploaded(file));
+    dispatch(fileUpload(file));
   },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
