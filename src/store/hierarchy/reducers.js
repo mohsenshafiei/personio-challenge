@@ -55,7 +55,7 @@ const hierarchyReducers = (state = initialState, action) => {
   switch (action.type) {
     case 'JSON_FILE_UPLOADED': {
       const employees = transformEmployees(action.payload);
-      window.localStorage.setItem('file', JSON.stringify(employees));
+      window.localStorage.setItem('file', JSON.stringify(updateEmployeesIds(employees)));
       return {
         ...state,
         employees: updateEmployeesIds(employees),
