@@ -11,7 +11,7 @@ const Header = props => (
       <Link className="logo" to="/" >
         <Personio/>
       </Link>
-      <a className="language" onClick={ () => { props.changeLanguage(); } }>{i18n.t('language')}</a>
+      <a className="language" onClick={ () => { props.changeLanguage(i18n.t('language')); } }>{i18n.t('language')}</a>
     </div>
 );
 
@@ -24,8 +24,8 @@ const mapStateToProps = state => ({
   main: state.main,
 });
 const mapDispatchToProps = dispatch => ({
-  changeLanguage: () => {
-    dispatch(changeLanguage());
+  changeLanguage: (payload) => {
+    dispatch(changeLanguage(payload));
   },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

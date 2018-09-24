@@ -1,6 +1,6 @@
 const changeLanguage = payload => (
   {
-    type: 'CHANGE_LANGUAGE',
+    type: 'SET_LANGUAGE',
     payload,
   }
 );
