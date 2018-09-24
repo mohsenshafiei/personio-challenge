@@ -1,4 +1,4 @@
-export const fileUploaded = payload => (
+export const fileUpload = payload => (
   {
     type: 'JSON_FILE_UPLOADED',
     payload,
