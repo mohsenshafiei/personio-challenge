@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { changeHierarchy } from '../../store/hierarchy/actions';
 
 const placeholder = document.createElement('li');
 placeholder.className = 'placeholder';
@@ -9,41 +10,8 @@ class List extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: props.items || JSON.parse(window.localStorage.getItem('file')),
       target: null,
     };
-  }
-
-  traverseDataToFindDragged(list, dragged) {
-    let data = null;
-    if (dragged.length > 1) {
-      data = this.traverseDataToFindDragged(
-        list[dragged.charAt(0)][Object.keys(list[dragged.charAt(0)])].employees,
-        dragged.substring(1, dragged.length),
-      );
-    } else {
-      data = list[dragged.charAt(0)];
-      // eslint-disable-next-line
-      delete list[dragged.charAt(0)];
-      return data;
-    }
-    return data;
-  }
-
-  traverseDataToFindTarget(list, target, dragged) {
-    if (target.length > 1) {
-      this.traverseDataToFindTarget(
-        list[target.charAt(0)][Object.keys(list[target.charAt(0)])].employees,
-        target.substring(1, target.length),
-        dragged,
-      );
-    } else {
-      // eslint-disable-next-line
-      list[list.length] = this.traverseDataToFindDragged(
-        this.state.employees, dragged,
-      );
-    }
-    return true;
   }
 
   dragStart(e) {
@@ -53,58 +21,51 @@ class List extends React.Component {
   }
 
   dragEnd(e) {
-    if (this.state.target.getAttribute('address')) {
-      this.traverseDataToFindTarget(
-        this.state.employees, this.state.target.getAttribute('address'), e.target.getAttribute('address'),
+    if (this.state.target.getAttribute('data-id')) {
+      console.log(e.target.getAttribute('data-id'));
+      console.log(this.state.target.getAttribute('data-id'));
+      this.props.change(
+        e.target.getAttribute('data-id'),
+        this.state.target.getAttribute('data-id'),
       );
     }
     this.dragged.style.display = 'block';
-    this.dragged.parentNode.removeChild(placeholder);
-    const data = this.state.employees;
-    this.setState({ employees: data });
   }
 
   dragOver(e) {
     this.setState({ target: e.target });
     e.preventDefault();
     this.dragged.style.display = 'none';
-    if (e.target.className === 'placeholder') return;
-    this.over = e.target;
-    e.target.parentNode.insertBefore(placeholder, e.target);
   }
 
-  renderTree(list, counter, address) {
-    return list.map((item, index) => (
-      item[Object.keys(item)].employees.length === 0 ? <li
-        data-id={index}
-        level={counter}
-        address={address + index}
-        key={index}
-        className={`list-item-${counter}`}
+  renderTree(list) {
+    return list.map(item => (
+      item.employees.length === 0 ? <li
+        data-id={item.id}
+        key={item.id}
+        className={`list-item-${item.id.length}`}
         draggable='true'
         onDragEnd={this.dragEnd.bind(this)}
         onDragStart={
           this.dragStart.bind(this)}>
-        { Object.keys(item) } | { item[Object.keys(item)].position }
+        { item.name } | { item.position }
       </li> : [
         <li
-          data-id={index}
-          level={counter}
-          address={address + index}
-          key={index}
-          className={`list-item-${counter}`}
+          data-id={item.id}
+          key={item.id}
+          className={`list-item-${item.id.length}`}
           draggable='true'
           onDragEnd={this.dragEnd.bind(this)}
           onDragStart={
             this.dragStart.bind(this)}
-        >{ Object.keys(item) } | { item[Object.keys(item)].position }</li>,
-        this.renderTree(item[Object.keys(item)].employees, counter + 1, (address + index)),
+        >{ item.name } | { item.position }</li>,
+        this.renderTree(item.employees),
       ]
     ));
   }
 
   render() {
-    const listItems = this.renderTree(this.state.items, 1, '');
+    const listItems = this.renderTree(this.props.items);
     return (
       <div className="list-component">
         <ul onDragOver={this.dragOver.bind(this)}>
@@ -117,10 +78,16 @@ class List extends React.Component {
 
 List.propTypes = {
   items: PropTypes.array,
+  change: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
   items: state.hierarchy.employees,
 });
+const mapDispatchToProps = dispatch => ({
+  change: (personId, leaderId) => {
+    dispatch(changeHierarchy(personId, leaderId));
+  },
+});
 
-export default connect(mapStateToProps, null)(List);
+export default connect(mapStateToProps, mapDispatchToProps)(List);
