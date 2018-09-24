@@ -28,12 +28,12 @@ function* hierarchyChanged(action) {
   }
 }
 
-function* fileUploaded() {
+function* fileUpload() {
   // you can send it to server here
   yield put({ type: 'JSON_FILE_UPLOADED_SUCCESSFUL', payload: true });
 }
 
 export default [
-  takeEvery('JSON_FILE_UPLOADED', fileUploaded),
+  takeEvery('JSON_FILE_UPLOADED', fileUpload),
   takeEvery('CHANGE_HIERARCHY', hierarchyChanged),
 ];

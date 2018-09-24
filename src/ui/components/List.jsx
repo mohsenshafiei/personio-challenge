@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { changeHierarchy } from '../../store/hierarchy/actions';
 
-const placeholder = document.createElement('li');
-placeholder.className = 'placeholder';
-
 class List extends React.Component {
   constructor(props) {
     super(props);
@@ -22,8 +19,6 @@ class List extends React.Component {
 
   dragEnd(e) {
     if (this.state.target.getAttribute('data-id')) {
-      console.log(e.target.getAttribute('data-id'));
-      console.log(this.state.target.getAttribute('data-id'));
       this.props.change(
         e.target.getAttribute('data-id'),
         this.state.target.getAttribute('data-id'),
