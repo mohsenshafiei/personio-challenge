@@ -6,7 +6,7 @@ import i18n from '../../i18n';
 import Uploader from '../components/Uploader.jsx';
 import Personio from '../components/Personio.jsx';
 
-import jsonFileUploaded from '../../store/hierarchy/actions';
+import { fileUploaded } from '../../store/hierarchy/actions';
 
 
 class Home extends React.Component {
@@ -30,7 +30,6 @@ class Home extends React.Component {
           classname="upload"
           onSelect={ (e) => {
             this.setState({ uploaded: true });
-            window.localStorage.setItem('file', e);
             this.props.upload(JSON.parse(e));
           }
           }
@@ -52,7 +51,7 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => ({
   upload: (file) => {
-    dispatch(jsonFileUploaded(file));
+    dispatch(fileUploaded(file));
   },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
