@@ -1,28 +1,30 @@
-import { takeEvery } from 'redux-saga/effects';
+import { takeEvery, put } from 'redux-saga/effects';
 import i18n from '../../i18n';
 
-function changeLanguage() {
-  if (i18n.language !== 'en') {
-    i18n.lang = 'en';
-    i18n.changeLanguage('en', (err) => {
+function* changeLanguage() {
+  if (i18n.language !== 'En') {
+    i18n.lang = 'En';
+    i18n.changeLanguage('En', (err) => {
       if (err) {
         return false;
       }
-      window.localStorage.setItem('locale', 'en');
+      window.localStorage.setItem('locale', 'En');
       return true;
     });
   } else {
-    i18n.lang = 'de';
-    i18n.changeLanguage('de', (err) => {
+    i18n.lang = 'De';
+    i18n.changeLanguage('De', (err) => {
       if (err) {
         return false;
       }
-      window.localStorage.setItem('locale', 'de');
+      window.localStorage.setItem('locale', 'De');
       return true;
     });
   }
+  yield put({ type: 'CHANGE_LANGUAGE', payload: i18n.lang });
+  return true;
 }
 
 export default [
-  takeEvery('CHANGE_LANGUAGE', changeLanguage),
+  takeEvery('SET_LANGUAGE', changeLanguage),
 ];
