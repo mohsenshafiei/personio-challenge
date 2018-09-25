@@ -4,7 +4,7 @@
   "description": "Ever Changing Company Hierarchy",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --open --hot --config webpack/webpack.dev.js",
+    "start": "webpack-dashboard -c -m -- webpack-dev-server --open --hot --config webpack/webpack.dev.js",
     "build": "webpack --config webpack/webpack.prod.js",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -50,6 +50,7 @@
     "stylelint-webpack-plugin": "^0.10.5",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0",
+    "webpack-dashboard": "^2.0.0",
     "webpack-dev-server": "^3.1.8",
     "webpack-merge": "^4.1.4"
   },
