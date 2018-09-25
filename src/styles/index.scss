@@ -1,5 +1,6 @@
 @import "globals/fonts";
 @import "globals/colors";
+@import "globals/animations";
 
 @import "pages/home";
 @import "pages/hierarchy";
@@ -9,6 +10,7 @@
 @import "components/list-component";
 @import "components/router-component";
 @import "components/uploader-component";
+@import "components/notification-component";
 
 body {
   font-size: 1em;
