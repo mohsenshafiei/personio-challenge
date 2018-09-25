@@ -1,0 +1,43 @@
+.notification-component {
+  z-index: 3;
+  position: absolute;
+  bottom: 1.5em;
+  right: 2.5em;
+  height: 3em;
+  background-color: $personio-yellow;
+  min-width: 20em;
+  -webkit-box-shadow: 0 0.1875em 0.3125em $personio-box-shadow;
+  -moz-box-shadow: 0 0.1875em 0.3125em $personio-box-shadow;
+  box-shadow: 0 0.1875em 0.3125em $personio-box-shadow;
+  text-align: center;
+  color: $personio-black;
+  font-weight: 900;
+  font-size: 0.8em;
+  padding: 0.5em;
+  animation: fadeInOut 3000ms;
+
+  &.--warning {
+    background-color: $personio-yellow;
+    border: 0.2em solid $personio-yellow;
+    color: $personio-black;
+  }
+
+  &.--error {
+    background-color: $personio-error;
+    border: 0.2em solid $personio-error;
+    color: $personio-white;
+  }
+
+  &.--info {
+    background-color: $personio-info;
+    border: 0.2em solid $personio-info;
+    color: $personio-white;
+  }
+
+  &.--success {
+    background-color: $personio-success;
+    border: 0.2em solid $personio-success;
+    color: $personio-white;
+  }
+}
+
