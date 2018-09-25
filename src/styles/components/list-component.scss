@@ -18,14 +18,22 @@
     padding: 0.8em;
     background: $personio-white;
     font-weight: 600;
-    font-size: 0.8em;
+    font-size: 0.92em;
+
+    .position {
+      color: $personio-black;
+      font-size: 0.75em;
+      border-radius: 0.3em;
+      margin-top: 0.2em;
+      display: block;
+    }
   }
 
   $class-slug: list-item !default;
-  @for $i from 1 through 10 {
+  @for $i from 1 through 30 {
     .#{$class-slug}-#{$i} {
-      padding-left: 1em * $i * $i/2;
-      background-color: hsla(210, 100%, 35%, 1.5/$i * 1/$i);
+      padding-left: 1em * $i * $i/3;
+      background-color: hsla(217, 90%, 61%, 1.1/$i * 1.1/$i);
 
       @if ($i == 1) {
         font-size: 0.9em;
@@ -35,17 +43,8 @@
 
       &:hover {
         background-color: $personio-yellow;
-        color: $personio-black
+        color: $personio-black;
       }
-    }
-  }
-
-  .placeholder {
-    background: $personio-green;
-
-    &:before {
-      content: "Drop Employee Here";
-      color: $personio-black;
     }
   }
 }
