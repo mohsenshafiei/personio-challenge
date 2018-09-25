@@ -18,5 +18,10 @@ export default {
     inputs: {
       uploader: 'Upload een bestand',
     },
+    filter: {
+      name: 'Naam',
+      position: 'Positie',
+      title: 'Selecteer Filter',
+    },
   },
 };
