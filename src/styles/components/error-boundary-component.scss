@@ -1,0 +1,34 @@
+.error-boundary {
+  background-color: $personio-yellow;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  .title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: $personio-font-family;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+  }
+
+  .logo {
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50% , -50%);
+
+    svg {
+      width: 40%;
+      min-width: 14em;
+      max-width: 16em;
+    }
+  }
+}
