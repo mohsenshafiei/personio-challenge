@@ -1,5 +1,7 @@
 <p align="center">
+    <a href="https://www.personio.com/" target="_blank">
     <img src="https://www.personio.de/wp-content/uploads/2017/11/personio_logo.svg" width="200"/>
+    </a>
 </p>
 
 # Personio Challenge
