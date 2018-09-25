@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import i18n from './i18n';
+import ErrorBoundary from './ui/components/ErrorBoundaryComponent.jsx';
 import Router from './router';
 import Header from './ui/components/Header.jsx';
 import Notification from './ui/components/Notification.jsx';
@@ -25,6 +26,7 @@ class App extends React.Component {
 
   render() {
     return (
+      <ErrorBoundary>
       <Provider store={store} >
         <div>
           <Header />
@@ -32,6 +34,7 @@ class App extends React.Component {
           <Notification />
         </div>
       </Provider>
+      </ErrorBoundary>
     );
   }
 }
