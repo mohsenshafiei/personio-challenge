@@ -1,4 +1,4 @@
-<img src="https://www.personio.de/wp-content/uploads/2017/11/personio_logo.svg" />
+<img style="width=10em; max-width:10em;" src="https://www.personio.de/wp-content/uploads/2017/11/personio_logo.svg" />
 
 # Personio Challenge
 
