@@ -1,7 +1,6 @@
-<div style="text-align:center;">
-<img src="https://www.personio.de/wp-content/uploads/2017/11/personio_logo.svg" width="200" style="margin: 0 auto;"/>
-</div>
-
+<p align="center">
+    <img src="https://www.personio.de/wp-content/uploads/2017/11/personio_logo.svg" width="200"/>
+</p>
 
 # Personio Challenge
 
