@@ -34,6 +34,7 @@ module.exports = {
   ],
   output: {
     filename: 'index.js',
+    chunkFilename: '[name].js',
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
   },
