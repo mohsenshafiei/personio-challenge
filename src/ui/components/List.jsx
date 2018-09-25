@@ -43,7 +43,7 @@ class List extends React.Component {
         onDragEnd={this.dragEnd.bind(this)}
         onDragStart={
           this.dragStart.bind(this)}>
-        { item.name } | { item.position }
+        { item.name } <span data-id={item.id} className="position">{item.position}</span>
       </li> : [
         <li
           data-id={item.id}
@@ -53,7 +53,7 @@ class List extends React.Component {
           onDragEnd={this.dragEnd.bind(this)}
           onDragStart={
             this.dragStart.bind(this)}
-        >{ item.name } | { item.position }</li>,
+        >{ item.name } <span data-id={item.id} className="position">{item.position}</span></li>,
         this.renderTree(item.employees),
       ]
     ));
