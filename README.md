@@ -1,3 +1,5 @@
+<img src="./https://www.personio.de/wp-content/uploads/2017/11/personio_logo.svg" />
+
 # Personio Challenge
 
 Ever Changing Company Hierarchy
