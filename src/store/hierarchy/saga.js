@@ -18,7 +18,8 @@ const getPerson = (employees = [], personId) => {
 
 function* hierarchyChanged(action) {
   if (action.leaderId.indexOf(action.personId) === 0) {
-    alert('This Action Is Not Possible, You Are Making a Loop!');
+    // alert('This Action Is Not Possible, You Are Making a Loop!');
+    yield put({ type: 'NOTIFICATION', title: 'This Action Is Not Possible, You Are Making a Loop!', style: 'error' });
   } else {
     const person = yield select(state => getPerson(state.hierarchy.employees, action.personId));
     if (person) {
