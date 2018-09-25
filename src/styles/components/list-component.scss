@@ -25,7 +25,7 @@
   @for $i from 1 through 10 {
     .#{$class-slug}-#{$i} {
       padding-left: 1em * $i * $i/2;
-      background-color: rgb($i*80, $i*113, $i*192);
+      background-color: hsla(210, 100%, 35%, 1.5/$i * 1/$i);
 
       @if ($i == 1) {
         font-size: 0.9em;
