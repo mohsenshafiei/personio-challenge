@@ -8,7 +8,32 @@ class List extends React.Component {
     super(props);
     this.state = {
       target: null,
+      collapse: [],
     };
+  }
+
+  collapse(id) {
+    if (this.refs[`${id}0`] && this.refs[`${id}0`].classList.contains('collapse')) {
+      this.refs[`${id}0`].classList.remove('collapse');
+    }
+    for (let i = 0; i < 10; i += 1) {
+      if (this.refs[`${id}${i}`] && this.refs[`${id}${i}`].classList.contains('collapse')) {
+        this.refs[`${id}${i}`].classList.remove('collapse');
+      }
+    }
+  }
+
+  handleCollapse(id) {
+    Object.keys(this.refs).map((item) => {
+      if (id !== item && id === item.substr(0, item.length - (item.length - id.length))) {
+        if (item.length - id.length === 1) {
+          this.refs[item].classList.toggle('collapse');
+        } else {
+          this.refs[item].classList.add('collapse');
+        }
+      }
+      return true;
+    });
   }
 
   dragStart(e) {
@@ -18,19 +43,20 @@ class List extends React.Component {
   }
 
   dragEnd(e) {
+    if (this.state.target.getAttribute('data-id') !== '0') {
+      this.collapse(this.state.target.getAttribute('data-id'));
+    }
     if (this.state.target.getAttribute('data-id')) {
       this.props.change(
         e.target.getAttribute('data-id'),
         this.state.target.getAttribute('data-id'),
       );
     }
-    this.dragged.style.display = 'block';
   }
 
   dragOver(e) {
     this.setState({ target: e.target });
     e.preventDefault();
-    this.dragged.style.display = 'none';
   }
 
   renderTree(list) {
@@ -38,8 +64,12 @@ class List extends React.Component {
       item.employees.length === 0 ? <li
         data-id={item.id}
         key={item.id}
-        className={`list-item-${item.id.length}`}
+        ref={item.id}
+        className={`list-item-${item.id.length}` }
         draggable='true'
+        onClick={
+          this.handleCollapse.bind(this, item.id)
+        }
         onDragEnd={this.dragEnd.bind(this)}
         onDragStart={
           this.dragStart.bind(this)}>
@@ -51,8 +81,12 @@ class List extends React.Component {
         <li
           data-id={item.id}
           key={item.id}
+          ref={item.id}
           className={`list-item-${item.id.length}`}
           draggable='true'
+          onClick={
+            this.handleCollapse.bind(this, item.id)
+          }
           onDragEnd={this.dragEnd.bind(this)}
           onDragStart={
             this.dragStart.bind(this)}
@@ -85,7 +119,7 @@ List.propTypes = {
 
 const mapStateToProps = state => ({
   items: state.hierarchy.employees,
-  filter: state.hierarchy.filter
+  filter: state.hierarchy.filter,
 });
 const mapDispatchToProps = dispatch => ({
   change: (personId, leaderId) => {
