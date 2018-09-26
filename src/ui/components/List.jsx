@@ -43,7 +43,10 @@ class List extends React.Component {
         onDragEnd={this.dragEnd.bind(this)}
         onDragStart={
           this.dragStart.bind(this)}>
-        { item.name } <span data-id={item.id} className="position">{item.position}</span>
+        { (this.props.filter === 'All' || this.props.filter === 'Name')
+        && <span data-id={item.id}>{item.name }</span>}
+        { (this.props.filter === 'All' || this.props.filter === 'Position')
+        && <span data-id={item.id} className="position">{item.position}</span>}
       </li> : [
         <li
           data-id={item.id}
@@ -53,7 +56,10 @@ class List extends React.Component {
           onDragEnd={this.dragEnd.bind(this)}
           onDragStart={
             this.dragStart.bind(this)}
-        >{ item.name } <span data-id={item.id} className="position">{item.position}</span></li>,
+        >{ (this.props.filter === 'All' || this.props.filter === 'Name')
+        && <span data-id={item.id}>{item.name }</span>}
+        { (this.props.filter === 'All' || this.props.filter === 'Position')
+        && <span data-id={item.id} className="position">{item.position}</span> } </li>,
         this.renderTree(item.employees),
       ]
     ));
@@ -74,10 +80,12 @@ class List extends React.Component {
 List.propTypes = {
   items: PropTypes.array,
   change: PropTypes.func,
+  filter: PropTypes.string,
 };
 
 const mapStateToProps = state => ({
   items: state.hierarchy.employees,
+  filter: state.hierarchy.filter
 });
 const mapDispatchToProps = dispatch => ({
   change: (personId, leaderId) => {
