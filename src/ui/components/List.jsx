@@ -73,9 +73,9 @@ class List extends React.Component {
         onDragEnd={this.dragEnd.bind(this)}
         onDragStart={
           this.dragStart.bind(this)}>
-        { (this.props.filter === 'All' || this.props.filter === 'Name')
+        { (this.props.filter === 0 || this.props.filter === 1)
         && <span data-id={item.id}>{item.name }</span>}
-        { (this.props.filter === 'All' || this.props.filter === 'Position')
+        { (this.props.filter === 0 || this.props.filter === 2)
         && <span data-id={item.id} className="position">{item.position}</span>}
       </li> : [
         <li
@@ -90,9 +90,9 @@ class List extends React.Component {
           onDragEnd={this.dragEnd.bind(this)}
           onDragStart={
             this.dragStart.bind(this)}
-        >{ (this.props.filter === 'All' || this.props.filter === 'Name')
+        >{ (this.props.filter === 0 || this.props.filter === 1)
         && <span data-id={item.id}>{item.name }</span>}
-        { (this.props.filter === 'All' || this.props.filter === 'Position')
+        { (this.props.filter === 0 || this.props.filter === 2)
         && <span data-id={item.id} className="position">{item.position}</span> } </li>,
         this.renderTree(item.employees),
       ]
@@ -114,7 +114,7 @@ class List extends React.Component {
 List.propTypes = {
   items: PropTypes.array,
   change: PropTypes.func,
-  filter: PropTypes.string,
+  filter: PropTypes.number,
 };
 
 const mapStateToProps = state => ({
