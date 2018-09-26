@@ -20,6 +20,7 @@ export default {
     },
     filter: {
       name: 'Name',
+      all: 'All',
       position: 'Position',
       title: 'Select Filter',
     },

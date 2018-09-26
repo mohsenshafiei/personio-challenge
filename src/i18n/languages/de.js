@@ -20,6 +20,7 @@ export default {
     },
     filter: {
       name: 'Naam',
+      all: 'Alle',
       position: 'Positie',
       title: 'Selecteer Filter',
     },
