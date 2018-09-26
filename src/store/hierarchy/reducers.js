@@ -1,7 +1,7 @@
 const initialState = {
   employees: JSON.parse(window.localStorage.getItem('file')) || null,
   upload: false,
-  filter: 'All',
+  filter: 0,
 };
 
 const updateEmployeesIds = (employees, parentId = '') => employees.map((person, index) => {
