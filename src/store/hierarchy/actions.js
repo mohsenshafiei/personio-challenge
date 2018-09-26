@@ -18,3 +18,9 @@ export const changeFilter = filter => (
     filter,
   }
 );
+export const toggleCollapse = personId => (
+  {
+    type: 'TOGGLE_COLLAPSE',
+    personId,
+  }
+);
