@@ -1,39 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { changeHierarchy } from '../../store/hierarchy/actions';
+import { changeHierarchy, toggleCollapse } from '../../store/hierarchy/actions';
 
 class List extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       target: null,
-      collapse: [],
     };
-  }
-
-  collapse(id) {
-    if (this.refs[`${id}0`] && this.refs[`${id}0`].classList.contains('collapse')) {
-      this.refs[`${id}0`].classList.remove('collapse');
-    }
-    for (let i = 0; i < 10; i += 1) {
-      if (this.refs[`${id}${i}`] && this.refs[`${id}${i}`].classList.contains('collapse')) {
-        this.refs[`${id}${i}`].classList.remove('collapse');
-      }
-    }
-  }
-
-  handleCollapse(id) {
-    Object.keys(this.refs).map((item) => {
-      if (id !== item && id === item.substr(0, item.length - (item.length - id.length))) {
-        if (item.length - id.length === 1) {
-          this.refs[item].classList.toggle('collapse');
-        } else {
-          this.refs[item].classList.add('collapse');
-        }
-      }
-      return true;
-    });
   }
 
   dragStart(e) {
@@ -43,9 +18,6 @@ class List extends React.Component {
   }
 
   dragEnd(e) {
-    if (this.state.target.getAttribute('data-id') !== '0') {
-      this.collapse(this.state.target.getAttribute('data-id'));
-    }
     if (this.state.target.getAttribute('data-id')) {
       this.props.change(
         e.target.getAttribute('data-id'),
@@ -60,16 +32,12 @@ class List extends React.Component {
   }
 
   renderTree(list) {
-    return list.map(item => (
+    return list.map((item) => (
       item.employees.length === 0 ? <li
         data-id={item.id}
         key={item.id}
-        ref={item.id}
         className={`list-item-${item.id.length}` }
         draggable='true'
-        onClick={
-          this.handleCollapse.bind(this, item.id)
-        }
         onDragEnd={this.dragEnd.bind(this)}
         onDragStart={
           this.dragStart.bind(this)}>
@@ -81,20 +49,19 @@ class List extends React.Component {
         <li
           data-id={item.id}
           key={item.id}
-          ref={item.id}
           className={`list-item-${item.id.length}`}
           draggable='true'
-          onClick={
-            this.handleCollapse.bind(this, item.id)
-          }
+          onClick={() => this.props.toggleCollapse(item.id)}
           onDragEnd={this.dragEnd.bind(this)}
-          onDragStart={
-            this.dragStart.bind(this)}
-        >{ (this.props.filter === 0 || this.props.filter === 1)
-        && <span data-id={item.id}>{item.name }</span>}
-        { (this.props.filter === 0 || this.props.filter === 2)
-        && <span data-id={item.id} className="position">{item.position}</span> } </li>,
-        this.renderTree(item.employees),
+          onDragStart={this.dragStart.bind(this)}>
+          {
+            this.props.filter !== 2 ? <span data-id={item.id}>{item.collapsed ? '+' : '-'} {item.name}</span> : null
+          }
+          {
+            this.props.filter !== 1 ? <span data-id={item.id} className="position">{item.position}</span> : null
+          }
+        </li>,
+        item.collapsed ? null : this.renderTree(item.employees),
       ]
     ));
   }
@@ -114,6 +81,7 @@ class List extends React.Component {
 List.propTypes = {
   items: PropTypes.array,
   change: PropTypes.func,
+  toggleCollapse: PropTypes.func,
   filter: PropTypes.number,
 };
 
@@ -124,6 +92,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   change: (personId, leaderId) => {
     dispatch(changeHierarchy(personId, leaderId));
+  },
+  toggleCollapse: (personId) => {
+    dispatch(toggleCollapse(personId));
   },
 });
 

@@ -43,6 +43,12 @@ const addedEmployees = (employees, leaderId, newPerson) => employees.map((person
   return person;
 });
 
+const toggleCollapse = (employees, personId) => employees.map(person => ({
+  ...person,
+  collapsed: person.id === personId ? !person.collapsed : person.collapsed,
+  employees: toggleCollapse(person.employees, personId),
+}));
+
 const transformEmployees = employees => employees.map((person) => {
   const name = Object.keys(person)[0];
   return {
@@ -94,6 +100,11 @@ const hierarchyReducers = (state = initialState, action) => {
         filter: action.filter,
       };
     }
+    case 'TOGGLE_COLLAPSE':
+      return {
+        ...state,
+        employees: toggleCollapse(state.employees, action.personId),
+      };
     default:
       return state;
   }
