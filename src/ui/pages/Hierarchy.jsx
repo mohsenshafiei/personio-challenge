@@ -26,7 +26,7 @@ class Hierarchy extends React.Component {
             { title: i18n.t('filter.position'), id: 2 },
           ]}
           onSelect={(filter) => {
-            this.props.changeFilter(filter.title);
+            this.props.changeFilter(filter.id);
           }}
           display="inline-block"
         />
