@@ -12,3 +12,9 @@ export const changeHierarchy = (personId, leaderId) => (
     leaderId,
   }
 );
+export const changeFilter = filter => (
+  {
+    type: 'CHANGE_FILTER',
+    filter,
+  }
+);
