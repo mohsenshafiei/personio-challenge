@@ -18,5 +18,11 @@ export default {
     inputs: {
       uploader: 'Upload A File',
     },
+    filter: {
+      name: 'Name',
+      all: 'All',
+      position: 'Position',
+      title: 'Select Filter',
+    },
   },
 };

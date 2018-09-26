@@ -13,5 +13,8 @@
     width: 100%;
     position: absolute;
     top: 10%;
+    @media (max-width: 22em) {
+      top: 16%
+    }
   }
 }

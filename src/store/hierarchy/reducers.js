@@ -1,6 +1,7 @@
 const initialState = {
   employees: JSON.parse(window.localStorage.getItem('file')) || null,
   upload: false,
+  filter: 'All',
 };
 
 const updateEmployeesIds = (employees, parentId = '') => employees.map((person, index) => {
@@ -85,6 +86,12 @@ const hierarchyReducers = (state = initialState, action) => {
       return {
         ...state,
         employees: [action.person, ...state.employees],
+      };
+    }
+    case 'CHANGE_FILTER': {
+      return {
+        ...state,
+        filter: action.filter,
       };
     }
     default:
