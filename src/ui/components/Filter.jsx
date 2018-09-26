@@ -31,7 +31,7 @@ const Filter = (props) => {
 Filter.propTypes = {
   onSelect: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  display: PropTypes.oneOf(['inline', 'inline-block']),
+  display: PropTypes.oneOf(['block', 'inline-block']),
   items: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
     title: PropTypes.string,
