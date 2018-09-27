@@ -1,0 +1,48 @@
+.header-component {
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5em;
+  background-color: $personio-white;
+  border-bottom: 0.2em solid $personio-white;
+  min-width: 20em;
+  width: 100%;
+  -webkit-box-shadow: 0 0.1875em 0.3125em $personio-box-shadow;
+  -moz-box-shadow: 0 0.1875em 0.3125em $personio-box-shadow;
+  box-shadow: 0 0.1875em 0.3125em $personio-box-shadow;
+
+  .logo {
+    position: absolute;
+    top: 1em;
+    left: 5%;
+    text-align: center;
+
+    svg {
+      width: 10em;
+    }
+  }
+
+  .language {
+    position: absolute;
+    background-color: $personio-white;
+    top: 1.5em;
+    right: 5%;
+    padding: 0.5em 1.5em;
+    font-weight: 900;
+    border-radius: 0.2em;
+    border: 0.2em solid $personio-black;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    z-index: 4;
+
+    &:hover {
+      background-color: $personio-yellow;
+      cursor: pointer;
+    }
+  }
+}

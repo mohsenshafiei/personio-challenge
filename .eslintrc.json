@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "airbnb-base",
+    "plugin:react/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "class-methods-use-this": "off",
+    "import/named": "off",
+    "react/no-string-refs": "off"
+  }
+}

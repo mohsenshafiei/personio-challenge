@@ -1,0 +1,25 @@
+@import "globals/fonts";
+@import "globals/colors";
+@import "globals/animations";
+
+@import "pages/home";
+@import "pages/hierarchy";
+@import "pages/error";
+
+@import "components/header-component";
+@import "components/list-component";
+@import "components/router-component";
+@import "components/uploader-component";
+@import "components/notification-component";
+@import "components/error-boundary-component";
+@import "components/filter-component";
+
+body {
+  font-size: 1em;
+  font-family: $personio-font-family;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 20em;
+}

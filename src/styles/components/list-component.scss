@@ -1,0 +1,67 @@
+.list-component {
+  width: 90%;
+  position: absolute;
+  margin-left: 5%;
+  margin-bottom: 5em;
+  overflow-x: hidden;
+  background-color: $personio-white;
+  border-radius: 0.2em;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0.5em;
+    border: none
+  }
+
+  li {
+    padding: 0.8em;
+    background: $personio-white;
+    font-weight: 600;
+    font-size: 0.92em;
+
+    .position {
+      color: $personio-black;
+      font-size: 0.75em;
+      border-radius: 0.3em;
+      margin-top: 0.2em;
+      display: block;
+      margin-left: 2em;
+    }
+
+    .position-leaf {
+      color: $personio-black;
+      font-size: 0.75em;
+      border-radius: 0.3em;
+      margin-top: 0.2em;
+      display: block;
+    }
+
+    .collapse-badge {
+      color: black;
+      font-size: 1.2em;
+      font-weight: 500;
+      padding: 0.3em;
+      line-height: 1.5em;
+    }
+  }
+
+  $class-slug: list-item !default;
+  @for $i from 1 through 30 {
+    .#{$class-slug}-#{$i} {
+      padding-left: 1em * $i * $i/3;
+      background-color: hsla(217, 90%, 61%, 1.1/$i * 1.1/$i);
+
+      @if ($i == 1) {
+        font-size: 0.9em;
+        font-weight: 900;
+        color: white
+      }
+
+      &:hover {
+        background-color: $personio-yellow;
+        color: $personio-black;
+      }
+    }
+  }
+}
