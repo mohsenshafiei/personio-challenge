@@ -32,7 +32,7 @@ class List extends React.Component {
   }
 
   renderTree(list) {
-    return list.map((item) => (
+    return list.map(item => (
       item.employees.length === 0 ? <li
         data-id={item.id}
         key={item.id}
@@ -41,10 +41,10 @@ class List extends React.Component {
         onDragEnd={this.dragEnd.bind(this)}
         onDragStart={
           this.dragStart.bind(this)}>
-        { (this.props.filter === 0 || this.props.filter === 1)
-        && <span data-id={item.id}>{item.name }</span>}
-        { (this.props.filter === 0 || this.props.filter === 2)
-        && <span data-id={item.id} className="position">{item.position}</span>}
+        { this.props.filter !== 2
+          ? <span data-id={item.id}>{item.name }</span> : null}
+        { this.props.filter !== 1
+          ? <span data-id={item.id} className="position-leaf">{item.position}</span> : null}
       </li> : [
         <li
           data-id={item.id}
@@ -55,10 +55,18 @@ class List extends React.Component {
           onDragEnd={this.dragEnd.bind(this)}
           onDragStart={this.dragStart.bind(this)}>
           {
-            this.props.filter !== 2 ? <span data-id={item.id}>{item.collapsed ? '+' : '-'} {item.name}</span> : null
+            this.props.filter !== 2
+              ? <span data-id={item.id}>
+                  <span className="collapse-badge">{item.collapsed ? '+' : '-'} </span>
+                {item.name}
+                </span> : null
           }
           {
-            this.props.filter !== 1 ? <span data-id={item.id} className="position">{item.position}</span> : null
+            this.props.filter !== 1
+              ? <span data-id={item.id} className="position">
+                { this.props.filter !== 0 ? <span className="collapse-badge">{item.collapsed ? '+' : '-'} </span> : null}
+                {item.position}
+                </span> : null
           }
         </li>,
         item.collapsed ? null : this.renderTree(item.employees),

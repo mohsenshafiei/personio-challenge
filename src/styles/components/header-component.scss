@@ -33,6 +33,11 @@
     font-weight: 900;
     border-radius: 0.2em;
     border: 0.2em solid $personio-black;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
     z-index: 4;
 
     &:hover {
