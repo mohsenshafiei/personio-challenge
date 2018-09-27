@@ -26,10 +26,12 @@ function* hierarchyChanged(action) {
       yield put({ type: 'ADD_PERSON', leaderId: action.leaderId, person });
     }
   }
+  yield put({ type: 'DETECT_MULTIPLE_BOSS' });
 }
 
 function* fileUpload() {
   // you can send it to server here
+  yield put({ type: 'DETECT_MULTIPLE_BOSS' });
   yield put({ type: 'JSON_FILE_UPLOADED_SUCCESSFUL', payload: true });
 }
 
