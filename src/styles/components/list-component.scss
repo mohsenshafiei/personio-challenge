@@ -14,10 +14,6 @@
     border: none
   }
 
-  .collapse {
-    display: none;
-  }
-
   li {
     padding: 0.8em;
     background: $personio-white;
@@ -30,6 +26,23 @@
       border-radius: 0.3em;
       margin-top: 0.2em;
       display: block;
+      margin-left: 2em;
+    }
+
+    .position-leaf {
+      color: $personio-black;
+      font-size: 0.75em;
+      border-radius: 0.3em;
+      margin-top: 0.2em;
+      display: block;
+    }
+
+    .collapse-badge {
+      color: black;
+      font-size: 1.2em;
+      font-weight: 500;
+      padding: 0.3em;
+      line-height: 1.5em;
     }
   }
 
