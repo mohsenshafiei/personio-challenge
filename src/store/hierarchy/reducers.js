@@ -49,6 +49,12 @@ const toggleCollapse = (employees, personId) => employees.map(person => ({
   employees: toggleCollapse(person.employees, personId),
 }));
 
+
+const nodesList = employees => employees.reduce((result, person) => {
+  const count = nodesList(person.employees);
+  return [...result, person.name, ...count];
+}, []);
+
 const transformEmployees = employees => employees.map((person) => {
   const name = Object.keys(person)[0];
   return {
@@ -105,6 +111,12 @@ const hierarchyReducers = (state = initialState, action) => {
         ...state,
         employees: toggleCollapse(state.employees, action.personId),
       };
+    case 'DETECT_MULTIPLE_BOSS': {
+      return {
+        ...state,
+        appearance: nodesList(state.employees),
+      };
+    }
     default:
       return state;
   }
