@@ -26,16 +26,19 @@ function* hierarchyChanged(action) {
       yield put({ type: 'ADD_PERSON', leaderId: action.leaderId, person });
     }
   }
+}
+function* removeMultiplePerson(action) {
+  yield put({ type: 'REMOVE_PERSON', personId: action.personId });
   yield put({ type: 'DETECT_MULTIPLE_BOSS' });
 }
 
 function* fileUpload() {
   // you can send it to server here
-  yield put({ type: 'DETECT_MULTIPLE_BOSS' });
   yield put({ type: 'JSON_FILE_UPLOADED_SUCCESSFUL', payload: true });
 }
 
 export default [
   takeEvery('JSON_FILE_UPLOADED', fileUpload),
   takeEvery('CHANGE_HIERARCHY', hierarchyChanged),
+  takeEvery('REMOVE_MULTIPLE_PERSON', removeMultiplePerson),
 ];
