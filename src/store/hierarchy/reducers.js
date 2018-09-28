@@ -2,6 +2,7 @@ const initialState = {
   employees: JSON.parse(window.localStorage.getItem('file')) || null,
   upload: false,
   filter: 0,
+  frequencies: null,
 };
 
 const updateEmployeesIds = (employees, parentId = '') => employees.map((person, index) => {
@@ -49,9 +50,21 @@ const toggleCollapse = (employees, personId) => employees.map(person => ({
   employees: toggleCollapse(person.employees, personId),
 }));
 
+const countFrequency = employees => employees.reduce((list, person) => {
+  if (list[person]) {
+    return {
+      ...list,
+      [person]: list[person] + 1,
+    };
+  }
+  return {
+    ...list,
+    [person]: 1,
+  };
+}, {});
 
-const nodesList = employees => employees.reduce((result, person) => {
-  const count = nodesList(person.employees);
+const personsList = employees => employees.reduce((result, person) => {
+  const count = personsList(person.employees);
   return [...result, person.name, ...count];
 }, []);
 
@@ -112,9 +125,10 @@ const hierarchyReducers = (state = initialState, action) => {
         employees: toggleCollapse(state.employees, action.personId),
       };
     case 'DETECT_MULTIPLE_BOSS': {
+      const persons = personsList(state.employees);
       return {
         ...state,
-        appearance: nodesList(state.employees),
+        frequencies: countFrequency(persons),
       };
     }
     default:
