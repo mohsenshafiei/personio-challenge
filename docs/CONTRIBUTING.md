@@ -7,6 +7,7 @@
 
 [Styleguides](#styleguides)
   * [Git Commit Messages](#git-commit-messages)
+  * [SASS Style Guide](#sass-style-guide)
   
 ## How Can I Contribute?
 
@@ -43,3 +44,13 @@ Before creating bug reports, please check issues list as you might find out that
      * `perf` A code change that improves performance
      * `test` Adding missing tests
 * Don't forget to put the <b>DOT</b> at the end of your commit
+
+### SASS Style Guide
+
+We are using BEM for our styles:
+   - Block : Standalone entity that is meaningful on its own.
+        - `header`, `container`, `menu`, `checkbox`, `input`
+   - Element: A part of a block that has no standalone meaning and is semantically tied to its block.
+        - `menu item`, `list item`, `checkbox caption`, `header title`
+   - Modifier: A flag on a block or element. Use them to change appearance or behavior.
+        - `disabled`, `highlighted`, `checked`, `fixed`, `size big`, `color yellow`
