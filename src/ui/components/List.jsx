@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { changeHierarchy, toggleCollapse, removeMultiplePerson } from '../../store/hierarchy/actions';
+import { changeHierarchy, toggleCollapse, removePerson } from '../../store/hierarchy/actions';
 
 import i18n from '../../i18n';
 
@@ -53,7 +53,7 @@ class List extends React.Component {
               ? <span
                   data-id={item.id}
                   className="remove"
-                  onClick={() => this.props.removeMultiplePerson(item.id)}
+                  onClick={() => this.props.removePerson(item.id)}
                 >
                 {i18n.t('buttons.remove')}
                 </span> : null
@@ -83,7 +83,7 @@ class List extends React.Component {
                     ? <span
                         data-id={item.id}
                         className="remove"
-                        onClick={() => this.props.removeMultiplePerson(item.id)}
+                        onClick={() => this.props.removePerson(item.id)}
                       >
                         {i18n.t('buttons.remove')}
                       </span> : null
@@ -122,7 +122,7 @@ List.propTypes = {
   toggleCollapse: PropTypes.func,
   filter: PropTypes.number,
   frequencies: PropTypes.object,
-  removeMultiplePerson: PropTypes.func,
+  removePerson: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
@@ -137,8 +137,8 @@ const mapDispatchToProps = dispatch => ({
   toggleCollapse: (personId) => {
     dispatch(toggleCollapse(personId));
   },
-  removeMultiplePerson: (personId) => {
-    dispatch(removeMultiplePerson(personId));
+  removePerson: (personId) => {
+    dispatch(removePerson(personId));
   },
 });
 
