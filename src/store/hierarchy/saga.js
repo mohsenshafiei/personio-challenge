@@ -27,6 +27,10 @@ function* hierarchyChanged(action) {
     }
   }
 }
+function* removeMultiplePerson(action) {
+  yield put({ type: 'REMOVE_PERSON', personId: action.personId });
+  yield put({ type: 'DETECT_MULTIPLE_BOSS' });
+}
 
 function* fileUpload() {
   // you can send it to server here
@@ -36,4 +40,5 @@ function* fileUpload() {
 export default [
   takeEvery('JSON_FILE_UPLOADED', fileUpload),
   takeEvery('CHANGE_HIERARCHY', hierarchyChanged),
+  takeEvery('REMOVE_MULTIPLE_PERSON', removeMultiplePerson),
 ];

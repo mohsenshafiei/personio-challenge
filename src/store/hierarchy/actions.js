@@ -24,3 +24,14 @@ export const toggleCollapse = personId => (
     personId,
   }
 );
+export const detectMultipleBoss = () => (
+  {
+    type: 'DETECT_MULTIPLE_BOSS',
+  }
+);
+export const removeMultiplePerson = personId => (
+  {
+    type: 'REMOVE_MULTIPLE_PERSON',
+    personId,
+  }
+);
