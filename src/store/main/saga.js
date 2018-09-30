@@ -1,14 +1,7 @@
 import { takeEvery, put } from 'redux-saga/effects';
 import i18n from '../../i18n';
 
-import {
-  CHANGE_LANGUAGE,
-  JSON_FILE_UPLOADED_SUCCESSFUL,
-  NOTIFICATION_CALL,
-  SET_LANGUAGE,
-  NOTIFICATION,
-  SAVE_JSON_FILE,
-} from './actionTypes';
+import actionTypes from './actionTypes';
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
@@ -32,24 +25,24 @@ function* changeLanguage() {
       return true;
     });
   }
-  yield put({ type: CHANGE_LANGUAGE, payload: i18n.lang });
+  yield put({ type: actionTypes.CHANGE_LANGUAGE, payload: i18n.lang });
   return true;
 }
 
 function* fileUpload() {
   // you can send it to server here
-  yield put({ type: JSON_FILE_UPLOADED_SUCCESSFUL, payload: true });
+  yield put({ type: actionTypes.JSON_FILE_UPLOADED_SUCCESSFUL, payload: true });
 }
 function* notification(action) {
   yield put({
-    type: NOTIFICATION_CALL, payload: true, title: action.title, style: action.style,
+    type: actionTypes.NOTIFICATION_CALL, payload: true, title: action.title, style: action.style,
   });
   yield delay(3000);
-  yield put({ type: NOTIFICATION_CALL, payload: false, title: action.title });
+  yield put({ type: actionTypes.NOTIFICATION_CALL, payload: false, title: action.title });
 }
 
 export default [
-  takeEvery(SET_LANGUAGE, changeLanguage),
-  takeEvery(NOTIFICATION, notification),
-  takeEvery(SAVE_JSON_FILE, fileUpload),
+  takeEvery(actionTypes.SET_LANGUAGE, changeLanguage),
+  takeEvery(actionTypes.NOTIFICATION, notification),
+  takeEvery(actionTypes.SAVE_JSON_FILE, fileUpload),
 ];
