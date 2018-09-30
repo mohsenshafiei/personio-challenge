@@ -1,26 +1,39 @@
+import actionTypes from './actionTypes';
+
 export const fileUpload = payload => (
   {
-    type: 'JSON_FILE_UPLOADED',
+    type: actionTypes.JSON_FILE_UPLOADED,
     payload,
   }
 );
 
 export const changeHierarchy = (personId, leaderId) => (
   {
-    type: 'CHANGE_HIERARCHY',
+    type: actionTypes.CHANGE_HIERARCHY,
     personId,
     leaderId,
   }
 );
 export const changeFilter = filter => (
   {
-    type: 'CHANGE_FILTER',
+    type: actionTypes.CHANGE_FILTER,
     filter,
   }
 );
 export const toggleCollapse = personId => (
   {
-    type: 'TOGGLE_COLLAPSE',
+    type: actionTypes.TOGGLE_COLLAPSE,
+    personId,
+  }
+);
+export const detectMultipleBoss = () => (
+  {
+    type: actionTypes.DETECT_MULTIPLE_BOSS,
+  }
+);
+export const removePerson = personId => (
+  {
+    type: actionTypes.REMOVE_MULTIPLE_PERSON,
     personId,
   }
 );

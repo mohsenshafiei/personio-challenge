@@ -8,7 +8,7 @@
 
   &--inline-block > .container {
     display: inline-block;
-    @media (max-width: 22em) {
+    @media (max-width: 36em) {
       display: block;
     }
   }

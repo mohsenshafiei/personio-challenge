@@ -1,6 +1,8 @@
+import actionTypes from './actionTypes';
+
 const changeLanguage = payload => (
   {
-    type: 'SET_LANGUAGE',
+    type: actionTypes.SET_LANGUAGE,
     payload,
   }
 );

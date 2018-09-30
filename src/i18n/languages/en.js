@@ -18,11 +18,15 @@ export default {
     inputs: {
       uploader: 'Upload A File',
     },
+    buttons: {
+      remove: 'Remove',
+    },
     filter: {
       name: 'Name',
       all: 'All',
       position: 'Position',
       title: 'Select Filter',
+      multipleBoss: 'Multiple Boss Detection',
     },
   },
 };

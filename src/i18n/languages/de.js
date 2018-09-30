@@ -18,11 +18,15 @@ export default {
     inputs: {
       uploader: 'Upload een bestand',
     },
+    buttons: {
+      remove: 'Verwijderen',
+    },
     filter: {
       name: 'Naam',
       all: 'Alle',
       position: 'Positie',
       title: 'Selecteer Filter',
+      multipleBoss: 'Meerdere Boss-detectie',
     },
   },
 };

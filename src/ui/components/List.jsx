@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { changeHierarchy, toggleCollapse } from '../../store/hierarchy/actions';
+import { changeHierarchy, toggleCollapse, removePerson } from '../../store/hierarchy/actions';
+
+import i18n from '../../i18n';
 
 class List extends React.Component {
   constructor(props) {
@@ -36,20 +38,37 @@ class List extends React.Component {
       item.employees.length === 0 ? <li
         data-id={item.id}
         key={item.id}
-        className={`list-item-${item.id.length}` }
+        className={`list-item-${item.id.length}
+        ${this.props.filter === 3 && this.props.frequencies && this.props.frequencies[item.name] > 1
+          ? 'multiple-boss' : ''}` }
         draggable='true'
         onDragEnd={this.dragEnd.bind(this)}
         onDragStart={
           this.dragStart.bind(this)}>
         { this.props.filter !== 2
-          ? <span data-id={item.id}>{item.name }</span> : null}
+          ? <span data-id={item.id}>
+            {this.props.filter === 3
+            && this.props.frequencies
+            && this.props.frequencies[item.name] > 1
+              ? <span
+                  data-id={item.id}
+                  className="remove"
+                  onClick={() => this.props.removePerson(item.id)}
+                >
+                {i18n.t('buttons.remove')}
+                </span> : null
+            }
+            {item.name }
+            </span> : null}
         { this.props.filter !== 1
           ? <span data-id={item.id} className="position-leaf">{item.position}</span> : null}
       </li> : [
         <li
           data-id={item.id}
           key={item.id}
-          className={`list-item-${item.id.length}`}
+          className={`list-item-${item.id.length}
+          ${this.props.filter === 3 && this.props.frequencies && this.props.frequencies[item.name] > 1
+            ? 'multiple-boss' : ''}`}
           draggable='true'
           onClick={() => this.props.toggleCollapse(item.id)}
           onDragEnd={this.dragEnd.bind(this)}
@@ -58,13 +77,24 @@ class List extends React.Component {
             this.props.filter !== 2
               ? <span data-id={item.id}>
                   <span className="collapse-badge">{item.collapsed ? '+' : '-'} </span>
+                  {this.props.filter === 3
+                  && this.props.frequencies
+                  && this.props.frequencies[item.name] > 1
+                    ? <span
+                        data-id={item.id}
+                        className="remove"
+                        onClick={() => this.props.removePerson(item.id)}
+                      >
+                        {i18n.t('buttons.remove')}
+                      </span> : null
+                  }
                 {item.name}
                 </span> : null
           }
           {
             this.props.filter !== 1
               ? <span data-id={item.id} className="position">
-                { this.props.filter !== 0 ? <span className="collapse-badge">{item.collapsed ? '+' : '-'} </span> : null}
+                { this.props.filter !== 0 && this.props.filter !== 3 ? <span className="collapse-badge">{item.collapsed ? '+' : '-'} </span> : null}
                 {item.position}
                 </span> : null
           }
@@ -91,10 +121,13 @@ List.propTypes = {
   change: PropTypes.func,
   toggleCollapse: PropTypes.func,
   filter: PropTypes.number,
+  frequencies: PropTypes.object,
+  removePerson: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
   items: state.hierarchy.employees,
+  frequencies: state.hierarchy.frequencies,
   filter: state.hierarchy.filter,
 });
 const mapDispatchToProps = dispatch => ({
@@ -103,6 +136,9 @@ const mapDispatchToProps = dispatch => ({
   },
   toggleCollapse: (personId) => {
     dispatch(toggleCollapse(personId));
+  },
+  removePerson: (personId) => {
+    dispatch(removePerson(personId));
   },
 });
 

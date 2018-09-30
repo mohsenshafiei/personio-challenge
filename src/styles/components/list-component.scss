@@ -37,6 +37,24 @@
       display: block;
     }
 
+    .remove {
+      font-size: 0.7em;
+      color: $personio-white;
+      background-color: $personio-error;
+      padding: 0.5em;
+      border: 0.2em solid $personio-white;
+      border-radius: 0.5em;
+      position: absolute;
+      right: 2em;
+      margin-top: 0.3em;
+
+      &:hover {
+        background-color: $personio-black;
+        border-color: $personio-black;
+        color: $personio-error;
+      }
+    }
+
     .collapse-badge {
       color: black;
       font-size: 1.2em;
@@ -63,5 +81,9 @@
         color: $personio-black;
       }
     }
+  }
+
+  .multiple-boss {
+    background-color: $personio-error;
   }
 }
