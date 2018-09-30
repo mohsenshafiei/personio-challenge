@@ -2,6 +2,17 @@ import {
   put, takeEvery, select,
 } from 'redux-saga/effects';
 
+import {
+  NOTIFICATION,
+  REMOVE_PERSON,
+  ADD_PERSON,
+  DETECT_MULTIPLE_BOSS,
+  JSON_FILE_UPLOADED_SUCCESSFUL,
+  JSON_FILE_UPLOADED,
+  CHANGE_HIERARCHY,
+  REMOVE_MULTIPLE_PERSON,
+} from './actionTypes';
+
 const getPerson = (employees = [], personId) => {
   let employee = employees.find(person => person.id === personId);
   if (employee) {
@@ -18,27 +29,27 @@ const getPerson = (employees = [], personId) => {
 
 function* hierarchyChanged(action) {
   if (action.leaderId.indexOf(action.personId) === 0) {
-    yield put({ type: 'NOTIFICATION', title: 'This Action Is Not Possible, You Are Making a Loop!', style: 'error' });
+    yield put({ type: NOTIFICATION, title: 'This Action Is Not Possible, You Are Making a Loop!', style: 'error' });
   } else {
     const person = yield select(state => getPerson(state.hierarchy.employees, action.personId));
     if (person) {
-      yield put({ type: 'REMOVE_PERSON', personId: action.personId });
-      yield put({ type: 'ADD_PERSON', leaderId: action.leaderId, person });
+      yield put({ type: REMOVE_PERSON, personId: action.personId });
+      yield put({ type: ADD_PERSON, leaderId: action.leaderId, person });
     }
   }
 }
 function* removePerson(action) {
-  yield put({ type: 'REMOVE_PERSON', personId: action.personId });
-  yield put({ type: 'DETECT_MULTIPLE_BOSS' });
+  yield put({ type: REMOVE_PERSON, personId: action.personId });
+  yield put({ type: DETECT_MULTIPLE_BOSS });
 }
 
 function* fileUpload() {
   // you can send it to server here
-  yield put({ type: 'JSON_FILE_UPLOADED_SUCCESSFUL', payload: true });
+  yield put({ type: JSON_FILE_UPLOADED_SUCCESSFUL, payload: true });
 }
 
 export default [
-  takeEvery('JSON_FILE_UPLOADED', fileUpload),
-  takeEvery('CHANGE_HIERARCHY', hierarchyChanged),
-  takeEvery('REMOVE_MULTIPLE_PERSON', removePerson),
+  takeEvery(JSON_FILE_UPLOADED, fileUpload),
+  takeEvery(CHANGE_HIERARCHY, hierarchyChanged),
+  takeEvery(REMOVE_MULTIPLE_PERSON, removePerson),
 ];
