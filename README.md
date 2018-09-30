@@ -30,7 +30,7 @@ To develop:
 ```bash
 # Runs a development enviroment
 # You can access the playground at http://localhost:9002 by default
-npm run dev
+npm start
 ```
 
 To build for production:
