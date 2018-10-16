@@ -41,7 +41,7 @@ class List extends React.Component {
       item.employees.length === 0 ? <li
         data-id={item.id}
         key={item.id}
-        className={`list-item-${item.id.length}
+        className={`list-item-${item.level}
         ${this.props.filter === 3 && this.props.frequencies && this.props.frequencies[item.name] > 1
           ? 'multiple-boss' : ''}` }
         draggable='true'
@@ -68,7 +68,7 @@ class List extends React.Component {
         <li
           data-id={item.id}
           key={item.id}
-          className={`list-item-${item.id.length}
+          className={`list-item-${item.level}
           ${this.props.filter === 3 && this.props.frequencies && this.props.frequencies[item.name] > 1
             ? 'multiple-boss' : ''}`}
           draggable='true'

@@ -5,12 +5,14 @@ const initialState = {
   frequencies: null,
 };
 
-const updateEmployeesIds = (employees, parentId = '') => employees.map((person, index) => {
+const updateEmployeesIds = (employees, parentId = '', parentLevel = 0) => employees.map((person, index) => {
   const id = `${parentId}${index}`;
+  const level = parentLevel + 1;
   return {
     ...person,
     id,
-    employees: updateEmployeesIds(person.employees, id),
+    level,
+    employees: updateEmployeesIds(person.employees, id, level),
   };
 });
 
@@ -68,12 +70,14 @@ const personsList = employees => employees.reduce((result, person) => {
   return [...result, person.name, ...count];
 }, []);
 
-const transformEmployees = employees => employees.map((person) => {
+const transformEmployees = (employees, parentLevel = 0) => employees.map((person) => {
   const name = Object.keys(person)[0];
+  const level = parentLevel + 1;
   return {
     name,
+    level,
     ...person[name],
-    employees: transformEmployees(person[name].employees || []),
+    employees: transformEmployees(person[name].employees || [], parentLevel),
   };
 });
 
