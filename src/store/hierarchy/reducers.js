@@ -6,7 +6,7 @@ const initialState = {
 };
 
 const updateEmployeesIds = (employees, parentId = '', parentLevel = 0) => employees.map((person, index) => {
-  const id = `${parentId}${index}`;
+  const id = `${parentId}_${index}`;
   const level = parentLevel + 1;
   return {
     ...person,
