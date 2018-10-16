@@ -11,6 +11,9 @@ class List extends React.Component {
     this.state = {
       target: null,
     };
+    this.dragEnd = this.dragEnd.bind(this);
+    this.dragStart = this.dragStart.bind(this);
+    this.dragOver = this.dragOver.bind(this);
   }
 
   dragStart(e) {
@@ -42,9 +45,8 @@ class List extends React.Component {
         ${this.props.filter === 3 && this.props.frequencies && this.props.frequencies[item.name] > 1
           ? 'multiple-boss' : ''}` }
         draggable='true'
-        onDragEnd={this.dragEnd.bind(this)}
-        onDragStart={
-          this.dragStart.bind(this)}>
+        onDragEnd={ this.dragEnd }
+        onDragStart={ this.dragStart }>
         { this.props.filter !== 2
           ? <span data-id={item.id}>
             {this.props.filter === 3
@@ -71,8 +73,8 @@ class List extends React.Component {
             ? 'multiple-boss' : ''}`}
           draggable='true'
           onClick={() => this.props.toggleCollapse(item.id)}
-          onDragEnd={this.dragEnd.bind(this)}
-          onDragStart={this.dragStart.bind(this)}>
+          onDragEnd={ this.dragEnd }
+          onDragStart={ this.dragStart }>
           {
             this.props.filter !== 2
               ? <span data-id={item.id}>
@@ -108,7 +110,7 @@ class List extends React.Component {
     const listItems = this.renderTree(this.props.items);
     return (
       <div className="list-component">
-        <ul onDragOver={this.dragOver.bind(this)}>
+        <ul onDragOver={this.dragOver}>
           {listItems}
         </ul>
       </div>
