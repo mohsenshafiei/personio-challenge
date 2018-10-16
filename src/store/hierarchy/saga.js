@@ -4,7 +4,7 @@ import {
 
 import actionTypes from './actionTypes';
 
-const getPerson = (employees = [], personId) => {
+export const getPerson = (employees = [], personId) => {
   let employee = employees.find(person => person.id === personId);
   if (employee) {
     return employee;
@@ -18,7 +18,7 @@ const getPerson = (employees = [], personId) => {
   return undefined;
 };
 
-function* hierarchyChanged(action) {
+export function* hierarchyChanged(action) {
   if (action.leaderId.indexOf(action.personId) === 0) {
     yield put({ type: actionTypes.NOTIFICATION, title: 'This Action Is Not Possible, You Are Making a Loop!', style: 'error' });
   } else {
@@ -29,12 +29,12 @@ function* hierarchyChanged(action) {
     }
   }
 }
-function* removePerson(action) {
+export function* removePerson(action) {
   yield put({ type: actionTypes.REMOVE_PERSON, personId: action.personId });
   yield put({ type: actionTypes.DETECT_MULTIPLE_BOSS });
 }
 
-function* fileUpload() {
+export function* fileUpload() {
   // you can send it to server here
   yield put({ type: actionTypes.JSON_FILE_UPLOADED_SUCCESSFUL, payload: true });
 }
