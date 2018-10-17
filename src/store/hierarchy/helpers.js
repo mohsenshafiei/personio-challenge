@@ -27,26 +27,24 @@ export const filterEmployees = (employees, removedId) => employees.reduce((resul
   return [...result, person];
 }, []);
 
-export const addedEmployees = (employees, leaderId, newPerson) => employees.map((person) => {
-  if (person.id === leaderId) {
-    return {
-      ...person,
-      employees: [newPerson, ...person.employees],
-    };
-  }
-  if (person.employees && person.employees.length) {
-    return {
-      ...person,
-      employees: addedEmployees(person.employees, leaderId, newPerson),
-    };
-  }
-  return person;
-});
+export const addedEmployees = (employees, leaderId, newPerson) => {
+  const leaderPath = getPathById(leaderId);
+  const index = Number(leaderPath.shift());
+  const leader = employees[index];
+  const isTargetLeader = leaderPath.length === 0;
+  return [
+    ...employees.slice(0, index),
+    {
+      ...leader,
+      employees: isTargetLeader
+        ? [newPerson, ...leader.employees]
+        : addedEmployees(leader.employees, getIdByPath(leaderPath), newPerson),
+    },
+    ...employees.slice(index + 1),
+  ];
+};
 
 export const toggleCollapse = (employees, personId) => {
-  if (!personId) {
-    return employees;
-  }
   const personPath = getPathById(personId);
   const index = Number(personPath.shift());
   const person = employees[index];
