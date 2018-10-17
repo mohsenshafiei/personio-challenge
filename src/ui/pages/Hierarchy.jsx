@@ -22,7 +22,6 @@ const Hierarchy = props => (
             props.detectMultipleBoss();
           }
         }}
-        display="inline-block"
       />
       <div className="list">
         <List language={i18n.language} />
