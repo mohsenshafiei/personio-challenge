@@ -4,7 +4,11 @@ import actionTypes from './actionTypes';
 
 export function* hierarchyChanged(action) {
   if (action.leaderId.indexOf(action.personId) === 0) {
-    yield put({ type: actionTypes.NOTIFICATION, title: 'This Action Is Not Possible, You Are Making a Loop!', style: 'error' });
+    yield put({
+      type: actionTypes.NOTIFICATION,
+      title: 'This Action Is Not Possible, You Are Making a Loop!',
+      style: 'error',
+    });
   } else {
     const person = yield select(state => getPerson(state.hierarchy.employees, action.personId));
     if (person) {
@@ -20,13 +24,13 @@ export function* removePerson(action) {
 }
 
 export function* fileUpload(action) {
-  const data = yield JSON.parse(action.payload);
-  const employees = yield transformEmployees(data);
-  yield window.localStorage.setItem('file', JSON.stringify(updateEmployeesIds(employees)));
+  const data = JSON.parse(action.payload);
+  const employees = transformEmployees(data);
+  window.localStorage.setItem('file', JSON.stringify(updateEmployeesIds(employees)));
   yield put({
     type: actionTypes.JSON_FILE_UPLOADED_SUCCESSFUL,
     payload: true,
-    data: yield updateEmployeesIds(employees),
+    data: updateEmployeesIds(employees),
   });
 }
 

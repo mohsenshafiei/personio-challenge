@@ -15,7 +15,10 @@ export function* fileUpload() {
 }
 export function* notification(action) {
   yield put({
-    type: actionTypes.NOTIFICATION_CALL, payload: true, title: action.title, style: action.style,
+    type: actionTypes.NOTIFICATION_CALL,
+    payload: true,
+    title: action.title,
+    style: action.style,
   });
   yield delay(3000);
   yield put({ type: actionTypes.NOTIFICATION_CALL, payload: false, title: action.title });
