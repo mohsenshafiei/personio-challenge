@@ -13,19 +13,23 @@ const getIdByPath = path => path.join('_');
 
 const getPathById = id => id.split('_');
 
-export const filterEmployees = (employees, removedId) => employees.reduce((result, person) => {
-  if (person.id === removedId) {
-    return result;
-  }
-  if (person.employees && person.employees.length) {
-    const filteredPerson = {
+export const filterEmployees = (employees, removedId) => {
+  const removedPath = getPathById(removedId);
+  const index = Number(removedPath.shift());
+  const person = employees[index];
+  const isTargetPerson = removedPath.length === 0;
+  return isTargetPerson ? [
+    ...employees.slice(0, index),
+    ...employees.slice(index + 1),
+  ] : [
+    ...employees.slice(0, index),
+    {
       ...person,
-      employees: filterEmployees(person.employees, removedId),
-    };
-    return [...result, filteredPerson];
-  }
-  return [...result, person];
-}, []);
+      employees: filterEmployees(person.employees, getIdByPath(removedPath)),
+    },
+    ...employees.slice(index + 1),
+  ];
+};
 
 export const addedEmployees = (employees, leaderId, newPerson) => {
   const leaderPath = getPathById(leaderId);
