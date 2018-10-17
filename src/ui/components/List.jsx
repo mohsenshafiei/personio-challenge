@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { changeHierarchy, toggleCollapse, removePerson } from '../../store/hierarchy/actions';
+import { changeHierarchy, toggleCollapse, removePerson, initApp } from '../../store/hierarchy/actions';
 import i18n from '../../i18n';
 
 class List extends React.Component {
@@ -13,6 +13,10 @@ class List extends React.Component {
     this.dragEnd = this.dragEnd.bind(this);
     this.dragStart = this.dragStart.bind(this);
     this.dragOver = this.dragOver.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.init();
   }
 
   dragStart(e) {
@@ -101,6 +105,7 @@ class List extends React.Component {
 
 List.propTypes = {
   items: PropTypes.array,
+  init: PropTypes.func,
   change: PropTypes.func,
   toggleCollapse: PropTypes.func,
   filter: PropTypes.number,
@@ -114,6 +119,9 @@ const mapStateToProps = state => ({
   filter: state.hierarchy.filter,
 });
 const mapDispatchToProps = dispatch => ({
+  init: () => {
+    dispatch(initApp());
+  },
   change: (personId, leaderId) => {
     dispatch(changeHierarchy(personId, leaderId));
   },

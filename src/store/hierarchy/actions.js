@@ -1,5 +1,9 @@
 import actionTypes from './actionTypes';
 
+export const initApp = () => ({
+  type: actionTypes.INIT_APP,
+});
+
 export const fileUpload = payload => ({
   type: actionTypes.JSON_FILE_UPLOADED,
   payload,

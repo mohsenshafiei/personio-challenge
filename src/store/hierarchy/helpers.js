@@ -1,5 +1,5 @@
 export const updateEmployeesIds = (employees, parentId = '', parentLevel = 0) => employees.map((person, index) => {
-  const id = `${parentId}_${index}`;
+  const id = parentId ? `${parentId}_${index}` : `${index}`;
   const level = parentLevel + 1;
   return {
     ...person,
@@ -8,6 +8,10 @@ export const updateEmployeesIds = (employees, parentId = '', parentLevel = 0) =>
     employees: updateEmployeesIds(person.employees, id, level),
   };
 });
+
+const getIdByPath = path => path.join('_');
+
+const getPathById = id => id.split('_');
 
 export const filterEmployees = (employees, removedId) => employees.reduce((result, person) => {
   if (person.id === removedId) {
@@ -39,22 +43,37 @@ export const addedEmployees = (employees, leaderId, newPerson) => employees.map(
   return person;
 });
 
-export const toggleCollapse = (employees, personId) => employees.map(person => ({
-  ...person,
-  collapsed: person.id === personId ? !person.collapsed : person.collapsed,
-  employees: toggleCollapse(person.employees, personId),
-}));
+export const toggleCollapse = (employees, personId) => {
+  if (!personId) {
+    return employees;
+  }
+  const personPath = getPathById(personId);
+  const index = Number(personPath.shift());
+  const person = employees[index];
+  const isTargetPerson = personPath.length === 0;
+  return [
+    ...employees.slice(0, index),
+    {
+      ...person,
+      collapsed: isTargetPerson ? !person.collapsed : person.collapsed,
+      employees: isTargetPerson
+        ? person.employees
+        : toggleCollapse(person.employees, getIdByPath(personPath)),
+    },
+    ...employees.slice(index + 1),
+  ];
+};
 
-export const countFrequency = employees => employees.reduce((list, person) => {
-  if (list[person]) {
+export const countFrequency = employeesNames => employeesNames.reduce((list, personName) => {
+  if (list[personName]) {
     return {
       ...list,
-      [person]: list[person] + 1,
+      [personName]: list[personName] + 1,
     };
   }
   return {
     ...list,
-    [person]: 1,
+    [personName]: 1,
   };
 }, {});
 

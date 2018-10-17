@@ -1,5 +1,5 @@
 import { put, takeEvery, select } from 'redux-saga/effects';
-import { transformEmployees, updateEmployeesIds, getPerson } from './functions';
+import { transformEmployees, updateEmployeesIds, getPerson } from './helpers';
 import actionTypes from './actionTypes';
 
 export function* hierarchyChanged(action) {
@@ -34,7 +34,19 @@ export function* fileUpload(action) {
   });
 }
 
+export function* init() {
+  const persistedJson = window.localStorage.getItem('file');
+  const persistedData = JSON.parse(persistedJson);
+  if (persistedData) {
+    yield put({
+      type: actionTypes.INIT_APP_OK,
+      data: persistedData,
+    });
+  }
+}
+
 export default [
+  takeEvery(actionTypes.INIT_APP, init),
   takeEvery(actionTypes.JSON_FILE_UPLOADED, fileUpload),
   takeEvery(actionTypes.CHANGE_HIERARCHY, hierarchyChanged),
   takeEvery(actionTypes.REMOVE_MULTIPLE_PERSON, removePerson),

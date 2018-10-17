@@ -1,5 +1,5 @@
 import { takeEvery, put } from 'redux-saga/effects';
-import { delay, setLanguage } from './functions';
+import { delay, setLanguage } from './helpers';
 import actionTypes from './actionTypes';
 import i18n from '../../i18n';
 
