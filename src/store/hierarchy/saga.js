@@ -13,6 +13,7 @@ export function* hierarchyChanged(action) {
     }
   }
 }
+
 export function* removePerson(action) {
   yield put({ type: actionTypes.REMOVE_PERSON, personId: action.personId });
   yield put({ type: actionTypes.DETECT_MULTIPLE_BOSS });
