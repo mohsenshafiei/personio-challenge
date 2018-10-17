@@ -5,12 +5,16 @@ import PropTypes from 'prop-types';
 const Notification = (props) => {
   if (props.notification) {
     return (
-      <div className={`notification-component --${props.notificationStyle || 'success'}`}>
+      <div className={`notification-component --${props.notificationStyle}`}>
         <p>{props.notificationTitle}</p>
       </div>
     );
   }
   return false;
+};
+
+Notification.defaultProps = {
+  notificationStyle: 'success',
 };
 
 Notification.propTypes = {

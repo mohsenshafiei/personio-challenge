@@ -9,5 +9,6 @@ const root = document.getElementById('root');
 ReactDOM.render(
   <BrowserRouter>
     <App />
-  </BrowserRouter>, root,
+  </BrowserRouter>,
+  root,
 );

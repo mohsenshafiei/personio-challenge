@@ -25,7 +25,7 @@ class ErrorBoundary extends React.Component {
       return (
         <div className="error-boundary">
           <div className="logo">
-            <Personio/>
+            <Personio />
           </div>
           <h1 className="title">Oops, something went wrong :(</h1>
         </div>

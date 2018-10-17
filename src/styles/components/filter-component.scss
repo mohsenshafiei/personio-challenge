@@ -6,7 +6,7 @@
   padding-left: 5%;
   margin-top: 1.5em;
 
-  &--inline-block > .container {
+  > .container {
     display: inline-block;
     @media (max-width: 36em) {
       display: block;

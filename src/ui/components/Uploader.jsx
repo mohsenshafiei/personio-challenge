@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import i18n from '../../i18n';
 
 const Uploader = (props) => {
@@ -19,10 +18,10 @@ const Uploader = (props) => {
 
   return (
     <div className="uploader-component">
-    <div className="uploader-btn-wrapper">
-      <button className="btn">{i18n.t('inputs.uploader')}</button>
-      <input type="file" accept="application/json" onChange={(e) => { onChange(e.target.files[0]); }} />
-    </div>
+      <div className="uploader-btn-wrapper">
+        <button className="btn">{i18n.t('inputs.uploader')}</button>
+        <input type="file" accept="application/json" onChange={(e) => { onChange(e.target.files[0]); }} />
+      </div>
     </div>
   );
 };

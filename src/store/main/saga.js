@@ -1,5 +1,5 @@
 import { takeEvery, put } from 'redux-saga/effects';
-import { delay, setLanguage } from './functions';
+import { delay, setLanguage } from './helpers';
 import actionTypes from './actionTypes';
 import i18n from '../../i18n';
 
@@ -15,7 +15,10 @@ export function* fileUpload() {
 }
 export function* notification(action) {
   yield put({
-    type: actionTypes.NOTIFICATION_CALL, payload: true, title: action.title, style: action.style,
+    type: actionTypes.NOTIFICATION_CALL,
+    payload: true,
+    title: action.title,
+    style: action.style,
   });
   yield delay(3000);
   yield put({ type: actionTypes.NOTIFICATION_CALL, payload: false, title: action.title });

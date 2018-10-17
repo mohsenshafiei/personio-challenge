@@ -9,7 +9,7 @@ import changeLanguage from '../../store/main/actions';
 const Header = props => (
     <div className="header-component">
       <Link className="logo" to="/" >
-        <Personio/>
+        <Personio />
       </Link>
       <a className="language" onClick={ () => { props.changeLanguage(i18n.t('language')); } }>{i18n.t('language')}</a>
     </div>

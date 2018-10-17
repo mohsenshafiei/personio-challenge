@@ -6,10 +6,10 @@ import {
   toggleCollapse,
   personsList,
   countFrequency,
-} from './functions';
+} from './helpers';
 
 const initialState = {
-  employees: JSON.parse(window.localStorage.getItem('file')) || null,
+  employees: [],
   upload: false,
   filter: 0,
   frequencies: null,
@@ -17,6 +17,12 @@ const initialState = {
 
 const hierarchyReducers = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.INIT_APP_OK: {
+      return {
+        ...state,
+        employees: action.data,
+      };
+    }
     case actionTypes.JSON_FILE_UPLOADED_SUCCESSFUL: {
       return {
         ...state,
