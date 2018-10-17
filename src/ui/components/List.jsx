@@ -58,12 +58,12 @@ class List extends React.Component {
             onClick={() => isBoss && this.props.toggleCollapse(item.id)}
             onDragEnd={ this.dragEnd }
             onDragStart={ this.dragStart }>
+            {isBoss
+              ? <span className="collapse-badge">{item.collapsed ? '+' : '-'} </span>
+              : null}
             {
               this.props.filter !== 2 ? (
                 <React.Fragment>
-                  {isBoss
-                    ? <span className="collapse-badge">{item.collapsed ? '+' : '-'} </span>
-                    : null}
                   <span data-id={item.id}>
                     {isMultiple ? (
                       <span
