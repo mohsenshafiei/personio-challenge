@@ -30,7 +30,7 @@ class Home extends React.Component {
           classname="upload"
           onSelect={ (e) => {
             this.setState({ uploaded: true });
-            this.props.upload(JSON.parse(e));
+            this.props.upload(e);
           }
           }
       />}
@@ -50,8 +50,8 @@ const mapStateToProps = state => ({
   hierarchy: state.hierarchy,
 });
 const mapDispatchToProps = dispatch => ({
-  upload: (file) => {
-    dispatch(fileUpload(file));
+  upload: (e) => {
+    dispatch(fileUpload(e));
   },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

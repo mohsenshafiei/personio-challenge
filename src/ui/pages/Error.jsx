@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import i18n from '../../i18n';
 import { Link } from 'react-router-dom';
+import i18n from '../../i18n';
 
 const Error = props => (
   <div className="error">

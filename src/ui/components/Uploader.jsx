@@ -8,16 +8,12 @@ const Uploader = (props) => {
     onSelect,
   } = props;
 
-  let fileReader;
-
-  const handleFileRead = (e) => {
-    const content = fileReader.result;
-    onSelect(content);
-  };
-
   const onChange = (file) => {
-    fileReader = new FileReader();
-    fileReader.onloadend = handleFileRead;
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      const content = fileReader.result;
+      onSelect(content);
+    };
     fileReader.readAsText(file);
   };
 

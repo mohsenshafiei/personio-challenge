@@ -14,23 +14,27 @@ export const changeHierarchy = (personId, leaderId) => (
     leaderId,
   }
 );
+
 export const changeFilter = filter => (
   {
     type: actionTypes.CHANGE_FILTER,
     filter,
   }
 );
+
 export const toggleCollapse = personId => (
   {
     type: actionTypes.TOGGLE_COLLAPSE,
     personId,
   }
 );
+
 export const detectMultipleBoss = () => (
   {
     type: actionTypes.DETECT_MULTIPLE_BOSS,
   }
 );
+
 export const removePerson = personId => (
   {
     type: actionTypes.REMOVE_MULTIPLE_PERSON,

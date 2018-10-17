@@ -1,3 +1,5 @@
+import actionTypes from './actionTypes';
+
 const initialState = {
   language: 'En',
   notification: false,
@@ -7,13 +9,13 @@ const initialState = {
 
 const mainReducers = (state = initialState, action) => {
   switch (action.type) {
-    case 'CHANGE_LANGUAGE': {
+    case actionTypes.CHANGE_LANGUAGE: {
       return {
         ...state,
         language: action.payload,
       };
     }
-    case 'NOTIFICATION_CALL': {
+    case actionTypes.NOTIFICATION_CALL: {
       return {
         ...state,
         notification: action.payload,
