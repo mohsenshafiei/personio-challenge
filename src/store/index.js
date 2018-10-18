@@ -1,9 +1,6 @@
 /* eslint-disable no-undef,no-underscore-dangle */
 import {
-  createStore,
-  applyMiddleware,
-  combineReducers,
-  compose,
+  createStore, applyMiddleware, combineReducers, compose,
 } from 'redux';
 import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
@@ -17,9 +14,9 @@ const reducers = combineReducers({
 });
 const logger = createLogger();
 const sagaMiddleware = createSagaMiddleware();
-const composeEnhancers = typeof window === 'object'
-&& window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
+const composeEnhancers = typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
+  : compose;
 
 const middleware = applyMiddleware(logger, sagaMiddleware);
 const enhancer = composeEnhancers(middleware);

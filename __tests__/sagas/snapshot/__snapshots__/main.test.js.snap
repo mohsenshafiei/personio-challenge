@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CHANGE LANGUAGE change language snapshot 1`] = `
+Object {
+  "put": Array [
+    Object {
+      "@@redux-saga/IO": true,
+      "PUT": Object {
+        "action": Object {
+          "payload": "De",
+          "type": "CHANGE_LANGUAGE",
+        },
+        "channel": null,
+      },
+    },
+  ],
+}
+`;
+
+exports[`File Uploaded file upload snapshot 1`] = `
+Object {
+  "put": Array [
+    Object {
+      "@@redux-saga/IO": true,
+      "PUT": Object {
+        "action": Object {
+          "payload": true,
+          "type": "JSON_FILE_UPLOADED_SUCCESSFUL",
+        },
+        "channel": null,
+      },
+    },
+  ],
+}
+`;
+
+exports[`Notification notification snapshot 1`] = `
+Object {
+  "put": Array [
+    Object {
+      "@@redux-saga/IO": true,
+      "PUT": Object {
+        "action": Object {
+          "payload": true,
+          "style": "error",
+          "title": "This Action Is Not Possible, You Are Making a Loop!",
+          "type": "NOTIFICATION_CALL",
+        },
+        "channel": null,
+      },
+    },
+  ],
+}
+`;

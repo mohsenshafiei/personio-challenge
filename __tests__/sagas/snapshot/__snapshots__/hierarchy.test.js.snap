@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Change Hierarchy Snapshot Test Hierarhcy change error snapshot 1`] = `
+Object {
+  "put": Array [
+    Object {
+      "@@redux-saga/IO": true,
+      "PUT": Object {
+        "action": Object {
+          "style": "error",
+          "title": "This Action Is Not Possible, You Are Making a Loop!",
+          "type": "NOTIFICATION",
+        },
+        "channel": null,
+      },
+    },
+  ],
+}
+`;
+
+exports[`Remove Person Snapshot Test remove multiple boss snapshot 1`] = `
+Object {
+  "put": Array [
+    Object {
+      "@@redux-saga/IO": true,
+      "PUT": Object {
+        "action": Object {
+          "personId": "00",
+          "type": "REMOVE_PERSON",
+        },
+        "channel": null,
+      },
+    },
+    Object {
+      "@@redux-saga/IO": true,
+      "PUT": Object {
+        "action": Object {
+          "type": "DETECT_MULTIPLE_BOSS",
+        },
+        "channel": null,
+      },
+    },
+  ],
+}
+`;

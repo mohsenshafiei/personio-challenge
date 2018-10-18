@@ -1,6 +1,6 @@
 .router {
   .fade-enter {
-    opacity: 0.01;
+    opacity: 0;
 
     &.fade-enter-active {
       opacity: 1;
@@ -12,8 +12,8 @@
     opacity: 1;
 
     &.fade-exit-active {
-      opacity: 0.01;
-      transition: opacity 300ms ease-in;
+      opacity: 0;
+      transition: opacity 300ms ease-out;
     }
   }
 }
