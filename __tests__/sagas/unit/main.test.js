@@ -3,7 +3,7 @@ import { testSaga } from 'redux-saga-test-plan';
 import { changeLanguage, notification, fileUpload } from '../../../src/store/main/saga';
 import actionTypes from "../../../src/store/main/actionTypes";
 import i18n from "../../../src/i18n/index";
-import {setLanguage, delay} from "../../../src/store/main/functions";
+import { setLanguage, delay } from "../../../src/store/main/helpers";
 
 describe('CHANGE LANGUAGE', () => {
   const action1 = { type: actionTypes.SET_LANGUAGE , payload: 'En' };
