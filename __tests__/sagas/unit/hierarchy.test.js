@@ -4,7 +4,7 @@ import { hierarchyChanged } from '../../../src/store/hierarchy/saga';
 import { removePerson } from '../../../src/store/hierarchy/saga';
 import actionTypes from "../../../src/store/hierarchy/actionTypes";
 import { store } from "../../../src/store/index";
-import {getPerson} from "../../../src/store/hierarchy/functions";
+import { getPerson } from "../../../src/store/hierarchy/helpers";
 
 describe('Change Hierarchy Test', () => {
   const action1 = { type: 'CHANGE_HIERARCHY', personId: '00', leaderId: '001'};
